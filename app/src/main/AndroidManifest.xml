@@ -13,13 +13,13 @@
         android:theme="@style/Theme.BankSampah"
         tools:targetApi="31">
         <activity
-            android:name=".InputDataActivity"
+            android:name=".ui.inputdata.InputDataActivity"
             android:exported="false" />
         <activity
-            android:name=".RiwayatActivity"
+            android:name=".ui.RiwayatActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
