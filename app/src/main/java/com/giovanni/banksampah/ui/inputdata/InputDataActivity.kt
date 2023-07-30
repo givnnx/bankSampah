@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -35,6 +36,23 @@ class InputDataActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = getViewModel(this)
         setAction()
+        setToolbar()
+    }
+
+    private fun setToolbar() {
+        setSupportActionBar(binding.toolbar)
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowTitleEnabled(false)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun getViewModel (activity: AppCompatActivity):InputDataViewModel {
