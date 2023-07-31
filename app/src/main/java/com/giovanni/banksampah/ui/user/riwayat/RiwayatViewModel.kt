@@ -8,4 +8,8 @@ class RiwayatViewModel(application: Application): ViewModel() {
     private val repository: Repository = Repository(application)
 
     val riwayat = repository.getData()
+
+    fun deleteData(uid: Int){
+        repository.deleteData(uid)
+    }
 }
