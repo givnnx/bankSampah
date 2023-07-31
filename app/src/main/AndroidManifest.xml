@@ -16,7 +16,7 @@
             android:name=".ui.inputdata.InputDataActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RiwayatActivity"
+            android:name=".ui.riwayat.RiwayatActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"

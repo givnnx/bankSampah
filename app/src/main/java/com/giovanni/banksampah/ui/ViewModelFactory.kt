@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.ui.inputdata.InputDataViewModel
+import com.giovanni.banksampah.ui.riwayat.RiwayatViewModel
 
 class ViewModelFactory constructor(private val mApplication: Application) :
     ViewModelProvider.NewInstanceFactory() {
@@ -11,6 +12,8 @@ class ViewModelFactory constructor(private val mApplication: Application) :
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(InputDataViewModel::class.java)) {
             return InputDataViewModel(mApplication) as T
+        } else if (modelClass.isAssignableFrom(RiwayatViewModel::class.java)) {
+            return RiwayatViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
