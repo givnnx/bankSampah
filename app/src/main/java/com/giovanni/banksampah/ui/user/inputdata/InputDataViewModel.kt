@@ -1,4 +1,4 @@
-package com.giovanni.banksampah.ui.inputdata
+package com.giovanni.banksampah.ui.user.inputdata
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

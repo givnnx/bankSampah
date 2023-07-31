@@ -1,4 +1,4 @@
-package com.giovanni.banksampah.ui.riwayat
+package com.giovanni.banksampah.ui.user.riwayat
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

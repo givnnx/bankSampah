@@ -1,11 +1,11 @@
-package com.giovanni.banksampah.ui.main
+package com.giovanni.banksampah.ui.user.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.giovanni.banksampah.databinding.ActivityMainBinding
-import com.giovanni.banksampah.ui.inputdata.InputDataActivity
-import com.giovanni.banksampah.ui.riwayat.RiwayatActivity
+import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
+import com.giovanni.banksampah.ui.user.riwayat.RiwayatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

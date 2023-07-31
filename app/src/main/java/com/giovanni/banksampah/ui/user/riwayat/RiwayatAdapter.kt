@@ -1,4 +1,4 @@
-package com.giovanni.banksampah.ui.riwayat
+package com.giovanni.banksampah.ui.user.riwayat
 
 import android.graphics.Color
 import android.view.LayoutInflater
