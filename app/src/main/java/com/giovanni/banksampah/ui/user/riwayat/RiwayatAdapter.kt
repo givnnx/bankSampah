@@ -8,7 +8,7 @@ import com.giovanni.banksampah.databinding.ItemRiwayatBinding
 import com.giovanni.banksampah.helper.Helper.rupiahFormat
 import com.giovanni.banksampah.model.Model
 
-class RiwayatAdapter(private val listRiwayat: List<Model>): RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
+class RiwayatAdapter(val listRiwayat: List<Model>, private val viewModel: RiwayatViewModel): RecyclerView.Adapter<RiwayatAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRiwayatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -31,6 +31,10 @@ class RiwayatAdapter(private val listRiwayat: List<Model>): RecyclerView.Adapter
             } else {
                 tvStatus.setTextColor(Color.GREEN)
                 tvStatus.text = "Telah dikonfirmasi"
+            }
+
+            imageDelete.setOnClickListener{
+                viewModel.deleteData(riwayat.uid)
             }
         }
     }
