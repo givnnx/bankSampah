@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.giovanni.banksampah.databinding.ActivityRegisterUserBinding
 import com.giovanni.banksampah.model.UserModel
-import com.giovanni.banksampah.ui.user.main.MainActivity
+import com.giovanni.banksampah.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -47,12 +47,12 @@ class RegisterUserActivity : AppCompatActivity() {
                                     password = password,
                                     level = "user"
                                 )
-                                val reference = firebaseDatabase.getReference("users").child(username)
+                                val reference = firebaseDatabase.getReference("users").child(user.uid)
 
                                 reference.setValue(userData).addOnCompleteListener{dataTask ->
                                     if(dataTask.isSuccessful){
                                         Toast.makeText(this@RegisterUserActivity, "dataStored", Toast.LENGTH_LONG).show()
-                                        val intent = Intent(this@RegisterUserActivity, MainActivity::class.java)
+                                        val intent = Intent(this@RegisterUserActivity, LoginActivity::class.java)
                                         startActivity(intent)
                                         finish()
                                     } else {
@@ -69,6 +69,11 @@ class RegisterUserActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this@RegisterUserActivity, "Fill All First", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            tvMasuk.setOnClickListener{
+                val intent = Intent(this@RegisterUserActivity, LoginActivity::class.java)
+                startActivity(intent)
             }
         }
     }

@@ -6,4 +6,6 @@ data class UserModel(
     val email: String,
     val password: String,
     val level: String
-)
+) {
+    constructor() : this("", "", "", "", "")
+}

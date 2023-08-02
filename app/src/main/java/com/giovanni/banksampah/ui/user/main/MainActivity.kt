@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setNavigation()
+        val userData = intent.getStringExtra(EXTRA_USER)
+        binding.username.text = userData
     }
 
     private fun setNavigation() {
@@ -28,5 +30,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_USER = "extra_user"
     }
 }
