@@ -9,7 +9,7 @@ import com.giovanni.banksampah.databinding.ActivityRiwayatBinding
 import com.giovanni.banksampah.model.Model
 import com.giovanni.banksampah.ui.ViewModelFactory
 
-class RiwayatActivity() : AppCompatActivity() {
+class RiwayatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRiwayatBinding
     private lateinit var viewModel: RiwayatViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
