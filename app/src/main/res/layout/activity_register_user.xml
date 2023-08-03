@@ -10,13 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="380dp"
+            android:layout_height="330dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/bg_rounded_greenacent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="380dp"
+            android:layout_height="330dp"
+            android:layout_marginTop="160dp"
+            android:src="@drawable/bg_rounded_greendark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="165dp"
             android:text="Daftar"
             android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,9 +51,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:hint="Username"
+            app:startIconDrawable="@drawable/ic_account_circle"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_register">
@@ -49,7 +75,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            app:startIconDrawable="@drawable/ic_email"
             android:hint="Email"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_username_layout">
@@ -70,7 +98,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:hint="Password"
+            android:textColorHint="@color/white"
             app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_lock"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_email_layout">
@@ -87,14 +117,16 @@
             android:id="@+id/btn_register"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="60dp"
             android:text="Daftar"
             android:textSize="18sp"
+            android:backgroundTint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="@+id/ed_password_layout"
             app:layout_constraintStart_toStartOf="@+id/ed_password_layout"
             app:layout_constraintTop_toBottomOf="@+id/ed_password_layout" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -119,6 +151,20 @@
                 android:text="Masuk"
                 android:textColor="#3F51B5" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_Signin"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginTop="15dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
