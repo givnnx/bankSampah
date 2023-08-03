@@ -10,13 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="380dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/bg_rounded_greendark"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="380dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/bg_rounded_greenacent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="170dp"
             android:text="Masuk"
             android:textSize="40sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +54,8 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:hint="Email"
+            android:textColorHint="@color/white"
+            app:startIconDrawable="@drawable/ic_account_circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_login">
@@ -50,7 +76,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:hint="Password"
+            android:textColorHint="@color/white"
             app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_lock"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_email_layout">
@@ -67,12 +95,15 @@
             android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:text="Masuk"
             android:textSize="18sp"
+            android:backgroundTint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="@+id/ed_password_layout"
             app:layout_constraintStart_toStartOf="@+id/ed_password_layout"
             app:layout_constraintTop_toBottomOf="@+id/ed_password_layout" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
