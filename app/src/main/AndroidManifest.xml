@@ -17,10 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.user.register.RegisterUserActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +25,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.user.register.RegisterUserActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".ui.admin.riwayat.AdminRiwayatActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.admin.main.MainActivity"
+            android:name=".ui.admin.main.AdminMainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.inputdata.InputDataActivity"
@@ -41,7 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.user.main.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

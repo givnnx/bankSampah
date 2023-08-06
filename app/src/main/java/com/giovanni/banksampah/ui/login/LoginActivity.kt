@@ -1,37 +1,58 @@
 package com.giovanni.banksampah.ui.login
 
-import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.databinding.ActivityLoginBinding
-import com.giovanni.banksampah.model.UserModel
+import com.giovanni.banksampah.model.UserPreference
+import com.giovanni.banksampah.ui.admin.main.AdminMainActivity
 import com.giovanni.banksampah.ui.user.main.MainActivity
-import com.giovanni.banksampah.ui.user.main.MainActivity.Companion.EXTRA_USER
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: FirebaseFirestore
+    private lateinit var viewModel: LoginViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getViewModel()
         auth()
     }
 
+    private fun getViewModel(){
+        viewModel = ViewModelProvider(this, ViewModelFactoryLogin(UserPreference.getInstance(dataStore)))[LoginViewModel::class.java]
+        viewModel.getUser().observe(this) { user ->
+            if (user.loginState) {
+                if (user.level == "user") {
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    intent.putExtra(MainActivity.EXTRA_USER, user.username)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                } else if (user.level == "admin") {
+                    val intent = Intent(this@LoginActivity, AdminMainActivity::class.java)
+                    intent.putExtra(MainActivity.EXTRA_USER, user.username)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+    }
     private fun auth(){
         firebaseAuth = Firebase.auth
         database = Firebase.firestore
@@ -42,24 +63,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = edPassword.text.toString()
 
                 if (email.isNotEmpty() && password.isNotEmpty()) {
-                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
-                        if (it.isSuccessful){
-                            val user = it.result.user?.uid.toString()
-
-                            database.collection("users").document(user)
-                                .get()
-                                .addOnSuccessListener { result ->
-                                    val name = result.data!!["username"].toString()
-                                    val level = result.data!!["level"].toString()
-                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    intent.putExtra(EXTRA_USER, name)
-                                    startActivity(intent)
-                                    finish()
-                                    Log.d("USER LOGIN", name)
-                                }
-                        }
-                    }
+                    viewModel.login(email, password, this@LoginActivity)
                 }
             }
         }

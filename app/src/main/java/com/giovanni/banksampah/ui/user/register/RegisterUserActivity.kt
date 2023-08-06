@@ -11,8 +11,6 @@ import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -48,8 +46,8 @@ class RegisterUserActivity : AppCompatActivity() {
                                     uid = user.uid,
                                     username = username,
                                     email = email,
-                                    password = password,
-                                    level = "user"
+                                    level = "user",
+                                    loginState = false
                                 )
 
                                 database.collection("users").document(user.uid)
