@@ -8,6 +8,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.ActivityLoginBinding
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.admin.main.AdminMainActivity

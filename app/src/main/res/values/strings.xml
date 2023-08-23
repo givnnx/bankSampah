@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Bank Sampah</string>
+    <string name="email">Email</string>
+    <string name="masuk">Masuk</string>
+    <string name="password">Password</string>
+    <string name="daftar">Daftar</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="email_register">Email</string>
+    <string name="password_register">Password</string>
+    <string name="daftar_register">Daftar</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="masuk_login">Masuk</string>
+    <string name="e_batrash">E-BaTrash</string>
 
     <string-array name="kategori_sampah">
         <item>Plastik</item>

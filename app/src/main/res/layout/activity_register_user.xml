@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".ui.user.register.RegisterUserActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="380dp"
-            android:layout_height="330dp"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="165dp"
-            android:src="@drawable/bg_rounded_greenacent"
-            app:layout_constraintBottom_toTopOf="@+id/btn_register"
+        <TextView
+            android:id="@+id/logoName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="@string/e_batrash"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imageView6"
             android:layout_width="380dp"
-            android:layout_height="330dp"
-            android:layout_marginTop="160dp"
-            android:src="@drawable/bg_rounded_greendark"
+            android:layout_height="400dp"
+            android:layout_marginTop="215dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/bg_rounded_greenacent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="380dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="210dp"
+            android:src="@drawable/bg_rounded_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="165dp"
-            android:text="Daftar"
-            android:textSize="40sp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="230dp"
+            android:text="@string/register"
+            android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,11 +68,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:hint="Username"
+            android:hint="@string/username"
+            android:background="@drawable/bg_rounded_trans"
             app:startIconDrawable="@drawable/ic_account_circle"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_register">
@@ -63,7 +81,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_username"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_outline"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,8 +95,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             app:startIconDrawable="@drawable/ic_email"
-            android:hint="Email"
-            android:textColorHint="@color/white"
+            android:hint="@string/email_register"
+            android:background="@drawable/bg_rounded_trans"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_username_layout">
@@ -85,7 +105,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_outline" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,8 +118,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:hint="Password"
-            android:textColorHint="@color/white"
+            android:hint="@string/password_register"
+            android:background="@drawable/bg_rounded_trans"
+            android:textColorHint="@color/black"
             app:endIconMode="password_toggle"
             app:startIconDrawable="@drawable/ic_lock"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,16 +131,17 @@
                 android:id="@+id/ed_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:background="@drawable/bg_rounded_outline"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="0dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Daftar"
+            android:layout_marginTop="20dp"
+            android:text="@string/daftar_register"
             android:textSize="18sp"
             android:backgroundTint="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="@+id/ed_password_layout"
@@ -140,32 +163,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sudah punya akun?" />
+                android:text="@string/sudah_punya_akun" />
 
             <TextView
                 android:id="@+id/tv_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="Masuk"
+                android:text="@string/masuk_login"
                 android:textColor="#3F51B5" />
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/pb_Signin"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginTop="15dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/overlayView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"/>
+
+        <ProgressBar
+            android:id="@+id/pb_Signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</FrameLayout>
