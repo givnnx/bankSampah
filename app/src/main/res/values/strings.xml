@@ -14,6 +14,10 @@
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="masuk_login">Masuk</string>
     <string name="e_batrash">E-BaTrash</string>
+    <string name="detail_info">Aplikasi E-BaTrash adalah solusi untuk menyelesaikan masalah sosial tentang kebersihan lingkungan.</string>
+    <string name="text_info">Tukarkan sampah plastikmu sekarang!</string>
+    <string name="location">Lokasi Anda</string>
+    <string name="category">Menu Kategori</string>
 
     <string-array name="kategori_sampah">
         <item>Plastik</item>
