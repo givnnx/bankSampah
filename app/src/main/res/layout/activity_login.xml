@@ -9,151 +9,184 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="380dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="215dp"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/bg_rounded_greenacent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="380dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="210dp"
-                android:src="@drawable/bg_rounded_white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/logoName"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:text="@string/e_batrash"
-                android:textSize="60sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/sora_bold"
+                android:text="E - BaTrash"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="170dp"
-                android:layout_marginTop="220dp"
-                android:text="@string/login"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ed_email_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="90dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/email"
-                android:textColorHint="@color/black"
-                android:background="@drawable/bg_rounded_trans"
-                app:startIconDrawable="@drawable/ic_account_circle"
+                android:layout_marginBottom="64dp"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_login">
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_email"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_rounded_outline"/>
+                    android:layout_height="match_parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/sora_semibold"
+                        android:text="Login"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ed_password_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/password"
-                android:textColorHint="@color/black"
-                android:background="@drawable/bg_rounded_trans"
-                app:endIconMode="password_toggle"
-                app:startIconDrawable="@drawable/ic_lock"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ed_email_layout">
+                    <LinearLayout
+                        android:id="@+id/email_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:background="@drawable/bg_rounded_outline"/>
+                        <TextView
+                            android:id="@+id/tv_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sora_semibold"
+                            android:text="Email"
+                            android:textSize="12sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ed_email_layout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:startIconDrawable="@drawable/ic_account_circle"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxCornerRadiusBottomStart="20dp"
+                            app:boxCornerRadiusTopEnd="20dp"
+                            app:boxCornerRadiusTopStart="20dp">
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_login">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ed_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/sora_light"
+                                android:hint="Masukkan email"
+                                android:textSize="14sp"
+                                app:startIconDrawable="@drawable/ic_account_circle" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_dft_bottom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/belum_punya_akun"
-                    android:textColor="@color/black"/>
+                    <LinearLayout
+                        android:id="@+id/password_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/email_layout">
 
-                <TextView
-                    android:id="@+id/tv_daftar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/daftar"
-                    android:textColor="#42b752" />
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sora_semibold"
+                            android:text="Password"
+                            android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/masuk"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:backgroundTint="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="@+id/ed_password_layout"
-                app:layout_constraintStart_toStartOf="@+id/ed_password_layout"
-                app:layout_constraintTop_toBottomOf="@+id/ed_password_layout" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/ed_password_layout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:boxCornerRadiusBottomEnd="20dp"
+                            app:boxCornerRadiusBottomStart="20dp"
+                            app:boxCornerRadiusTopEnd="20dp"
+                            app:boxCornerRadiusTopStart="20dp"
+                            app:endIconMode="password_toggle"
+                            app:startIconDrawable="@drawable/ic_lock">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ed_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/sora_light"
+                                android:hint="Masukkan password"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_login"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="#2ECC71"
+                        android:fontFamily="@font/sora_semibold"
+                        android:text="Login"
+                        app:layout_constraintEnd_toEndOf="@+id/password_layout"
+                        app:layout_constraintStart_toStartOf="@+id/password_layout"
+                        app:layout_constraintTop_toBottomOf="@+id/password_layout" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_login"
+                        app:layout_constraintStart_toStartOf="@+id/btn_login"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_login">
+
+                        <TextView
+                            android:id="@+id/tv_dft_bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sora_light"
+                            android:text="Belum punya akun?" />
+
+                        <TextView
+                            android:id="@+id/tv_daftar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sora_semibold"
+                            android:text="Daftar"
+                            android:textColor="#2ECA71" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,7 +209,7 @@
             android:layout_centerInParent="true"
             android:indeterminate="true"
             android:indeterminateTint="@color/colorPrimaryDark"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RelativeLayout>
 
 </FrameLayout>
