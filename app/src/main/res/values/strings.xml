@@ -18,6 +18,19 @@
     <string name="text_info">Tukarkan sampah plastikmu sekarang!</string>
     <string name="location">Lokasi Anda</string>
     <string name="category">Menu Kategori</string>
+    <string name="admin_login_btn">Admin</string>
+    <string name="riwayat_penerimaan">Riwayat Penerimaan</string>
+    <string name="saldo_amp_riwayat"><![CDATA[Saldo & Riwayat]]></string>
+    <string name="jenis_sampah">Jenis Sampah</string>
+    <string name="jemput_sampah">Jemput Sampah</string>
+    <string name="account">Account</string>
+    <string name="edit_address">Edit Address</string>
+    <string name="tap_edit">Tap to Edit Your Address</string>
+    <string name="change_password">Change Password</string>
+    <string name="tap_change">Tap to Change Your Password</string>
+    <string name="about">About</string>
+    <string name="log_out">Log Out</string>
+    <string name="sisa_saldo">Saldo: Rp100.00</string>
 
     <string-array name="kategori_sampah">
         <item>Plastik</item>

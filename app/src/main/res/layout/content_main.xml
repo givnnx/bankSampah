@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
@@ -19,7 +19,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/colorPrimary">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,24 +28,28 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/ic_truk" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_truk"
+                    android:background="@drawable/bg_rounded_white"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Jemput Sampah"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:text="@string/jemput_sampah"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/white" />
 
             </LinearLayout>
 
@@ -57,7 +62,8 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/colorPrimary">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,23 +72,26 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/ic_kategori" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_kategori"
+                    android:background="@drawable/bg_rounded_white"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Jenis Sampah"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:text="@string/jenis_sampah"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/white" />
 
             </LinearLayout>
 
@@ -102,7 +111,8 @@
             android:layout_height="180dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
+            app:cardElevation="5dp"
+            app:cardBackgroundColor="@color/colorPrimary">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,23 +121,26 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_recycle" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_recycle"
+                    android:background="@drawable/bg_rounded_white"
+                    android:scaleType="centerCrop"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Saldo &amp; Riwayat"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:text="@string/saldo_amp_riwayat"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/white" />
 
             </LinearLayout>
 
