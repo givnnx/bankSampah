@@ -1,6 +1,10 @@
 package com.giovanni.banksampah.ui.user.inputdata
 
+import android.app.Activity
 import android.app.Application
+import android.content.ContentValues
+import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,20 +13,25 @@ import com.giovanni.banksampah.model.Model
 import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.repository.Repository
-import com.giovanni.banksampah.ui.login.LoginViewModel
+import com.giovanni.banksampah.ui.user.main.MainActivity
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class InputDataViewModel(application: Application, private val pref: UserPreference): ViewModel() {
+    private lateinit var database: FirebaseFirestore
     private val repository: Repository = Repository(application)
 
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
     }
 
-    fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String){
+    fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity){
         CoroutineScope(Dispatchers.IO).launch {
+            database = Firebase.firestore
             val user = Model(
                 namaPengguna = nama,
                 jenisSampah = kategori,
@@ -32,7 +41,17 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
                 alamat = alamat,
                 catatan = catatan
             )
-            repository.insert(user)
+            database.collection("sampah").document(kategori)
+                .set(user)
+                .addOnSuccessListener {
+                    Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
+                    repository.insert(user)
+                    val intent = Intent(activity, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    activity.startActivity(intent)
+                    activity.finish()
+                }
+                .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document", e) }
         }
     }
 }

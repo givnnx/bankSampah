@@ -2,7 +2,6 @@ package com.giovanni.banksampah.ui.user.inputdata
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,7 +20,6 @@ import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.ActivityInputDataBinding
 import com.giovanni.banksampah.helper.Helper.rupiahFormat
 import com.giovanni.banksampah.model.UserPreference
-import com.giovanni.banksampah.ui.user.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -156,12 +154,7 @@ class InputDataActivity : AppCompatActivity() {
                 viewModel.getUser().observe(this@InputDataActivity) {
                     nama = it.username
                 }
-                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan)
-
-                val intent = Intent(this@InputDataActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-                finish()
+                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity)
             }
         }
     }
