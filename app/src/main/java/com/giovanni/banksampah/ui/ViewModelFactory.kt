@@ -10,9 +10,7 @@ class ViewModelFactory constructor(private val mApplication: Application) :
     ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(InputDataViewModel::class.java)) {
-            return InputDataViewModel(mApplication) as T
-        } else if (modelClass.isAssignableFrom(RiwayatViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(RiwayatViewModel::class.java)) {
             return RiwayatViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

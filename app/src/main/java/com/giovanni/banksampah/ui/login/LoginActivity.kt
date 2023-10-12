@@ -13,6 +13,7 @@ import com.giovanni.banksampah.databinding.ActivityLoginBinding
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.admin.main.AdminMainActivity
 import com.giovanni.banksampah.ui.user.main.MainActivity
+import com.giovanni.banksampah.ui.user.register.RegisterUserActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         getViewModel()
         auth()
+        daftar()
     }
 
     private fun getViewModel(){
@@ -67,6 +69,15 @@ class LoginActivity : AppCompatActivity() {
                     viewModel.login(email, password, this@LoginActivity)
                 }
             }
+        }
+    }
+
+    private fun daftar(){
+        binding.tvDaftar.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterUserActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
         }
     }
 }

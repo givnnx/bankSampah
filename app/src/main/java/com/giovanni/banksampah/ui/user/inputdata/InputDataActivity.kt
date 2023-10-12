@@ -1,8 +1,8 @@
 package com.giovanni.banksampah.ui.user.inputdata
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,16 +12,21 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.ActivityInputDataBinding
 import com.giovanni.banksampah.helper.Helper.rupiahFormat
-import com.giovanni.banksampah.ui.ViewModelFactory
+import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.user.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class InputDataActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputDataBinding
     private lateinit var viewModel: InputDataViewModel
@@ -34,7 +39,7 @@ class InputDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInputDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = getViewModel(this)
+        viewModel = getViewModel(this@InputDataActivity, dataStore)
         setAction()
         setToolbar()
     }
@@ -55,8 +60,8 @@ class InputDataActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getViewModel (activity: AppCompatActivity): InputDataViewModel {
-        val factory = ViewModelFactory.getInstance(activity.application)
+    private fun getViewModel (activity: AppCompatActivity, dataStore: DataStore<Preferences>): InputDataViewModel {
+        val factory = ViewModelFactoryInputData(activity.application, UserPreference.getInstance(dataStore))
         return ViewModelProvider(activity, factory)[InputDataViewModel::class.java]
     }
 
@@ -141,15 +146,17 @@ class InputDataActivity : AppCompatActivity() {
             }
 
             btnCheckout.setOnClickListener{
-                val namaPengguna = inputNama.text.toString()
                 val kategoriSampah = strKategoriSelected
                 val berat = inputBerat.text.toString().toInt()
                 val harga = calTotal
                 val tanggal = inputTanggal.text.toString()
                 val alamat = inputAlamat.text.toString()
                 val catatan = inputTambahan.text.toString()
-
-                viewModel.addOrder(namaPengguna, kategoriSampah, berat, harga, tanggal, alamat, catatan)
+                var nama = "Nama"
+                viewModel.getUser().observe(this@InputDataActivity) {
+                    nama = it.username
+                }
+                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan)
 
                 val intent = Intent(this@InputDataActivity, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)

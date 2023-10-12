@@ -99,35 +99,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nama Pengguna"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputNama"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:backgroundTint="@color/colorPrimary"
-                            android:hint="Masukan nama lengkap"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPersonName"
-                            android:maxLines="1"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:orientation="vertical">
@@ -363,7 +334,8 @@
             android:id="@+id/overlayView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#80000000"/>
+            android:background="#80000000"
+            android:visibility="gone"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
