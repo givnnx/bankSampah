@@ -25,7 +25,7 @@ class Repository(application: Application) {
         return daoBS.getAll()
     }
 
-    fun deleteData(uid: Int){
+    fun deleteData(uid: String){
         executor.execute{daoBS.deleteSingleData(uid)}
     }
 }

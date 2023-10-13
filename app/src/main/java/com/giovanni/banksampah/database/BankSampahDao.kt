@@ -19,5 +19,5 @@ interface BankSampahDao {
     fun insertData(modelDatabases: Model)
 
     @Query("DELETE FROM db_banksampah WHERE uid= :uid")
-    fun deleteSingleData(uid: Int)
+    fun deleteSingleData(uid: String)
 }

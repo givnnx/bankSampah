@@ -20,6 +20,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 class InputDataViewModel(application: Application, private val pref: UserPreference): ViewModel() {
     private lateinit var database: FirebaseFirestore
@@ -32,7 +33,9 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
     fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity){
         CoroutineScope(Dispatchers.IO).launch {
             database = Firebase.firestore
+            val uid = UUID.randomUUID().toString()
             val user = Model(
+                uid = uid,
                 namaPengguna = nama,
                 jenisSampah = kategori,
                 berat = berat,
@@ -41,16 +44,28 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
                 alamat = alamat,
                 catatan = catatan
             )
-            database.collection("sampah").document(kategori)
-                .set(user)
+            val docRef = database.collection(nama).document(uid)
+            docRef.set(user)
                 .addOnSuccessListener {
                     Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
+                    user.uid = uid
                     repository.insert(user)
                     val intent = Intent(activity, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     activity.startActivity(intent)
                     activity.finish()
                 }
+                .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document", e) }
+            val ref = database.collection(kategori).document(uid)
+            ref.set(user).addOnSuccessListener {
+                Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
+                user.uid = uid
+                repository.insert(user)
+                val intent = Intent(activity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                activity.startActivity(intent)
+                activity.finish()
+            }
                 .addOnFailureListener { e -> Log.w(ContentValues.TAG, "Error writing document", e) }
         }
     }
