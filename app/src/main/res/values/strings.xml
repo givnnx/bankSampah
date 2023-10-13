@@ -55,6 +55,20 @@
     <string name="berat_sampah">Berat Sampah</string>
     <string name="alamat_rumah">Alamat Rumah</string>
     <string name="riwayat_anda">Riwayat Anda</string>
+    <string name="address">Address</string>
+    <string name="aturan_form">Mohon isi data dibawah ini dengan benar</string>
+    <string name="berat_kg">Berat (Kg)</string>
+    <string name="contoh_berat">5 Kg</string>
+    <string name="harga_per_kg">Harga (per Kg)</string>
+    <string name="kategori_sampah_form">Kategori Sampah</string>
+    <string name="contoh_harga">Rp. 1500/Kg</string>
+    <string name="tanggal_penjemputan">Tanggal Penjemputan</string>
+    <string name="isi_tanggal">Masukan tanggal</string>
+    <string name="catatan_tambahan">Catatan Tambahan (Opsional)</string>
+    <string name="isi_catatan">Masukan catatan tambahan anda</string>
+    <string name="tbl_jemput">Jemput Sekarang</string>
+    <string name="info_icon">info icon</string>
+    <string name="drop_down_icon">drop down icon</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
