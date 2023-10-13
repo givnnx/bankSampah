@@ -29,7 +29,7 @@ class RiwayatAdapter(val listRiwayat: List<Model>, private val viewModel: Riwaya
             if (riwayat.status == "Belum diterima") {
                 tvStatus.setTextColor(Color.RED)
             } else if (riwayat.status == "Diproses") {
-                tvStatus.setTextColor(Color.YELLOW)
+                tvStatus.setTextColor(Color.parseColor("#f1c232"))
             } else {
                 tvStatus.setTextColor(Color.GREEN)
             }

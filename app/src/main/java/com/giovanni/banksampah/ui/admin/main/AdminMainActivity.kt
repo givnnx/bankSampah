@@ -3,8 +3,8 @@ package com.giovanni.banksampah.ui.admin.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.AdminActivityMainBinding
+import com.giovanni.banksampah.ui.admin.adminprofile.AdminProfileActivity
 import com.giovanni.banksampah.ui.admin.daftarpermintaan.DaftarPermintaanActivity
 import com.giovanni.banksampah.ui.admin.riwayat.AdminRiwayatActivity
 
@@ -32,8 +32,8 @@ class AdminMainActivity : AppCompatActivity() {
         }
         binding.apply {
             imageProfile.setOnClickListener {
-//                val intent = Intent(this@AdminMainActivity, AdminProfileActivity::class.java)
-//                startActivity(intent)
+                val intent = Intent(this@AdminMainActivity, AdminProfileActivity::class.java)
+                startActivity(intent)
             }
         }
     }
