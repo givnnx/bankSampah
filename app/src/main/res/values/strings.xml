@@ -49,17 +49,28 @@
     <string name="email_name">Email</string>
     <string name="password_name">Password</string>
     <string name="daftar_permintaan">Permintaan</string>
+    <string name="nama_user">Nama</string>
+    <string name="tanggal_sampah">Tanggal Pendaftaran</string>
+    <string name="kategori_sampah">Kategori Sampah</string>
+    <string name="berat_sampah">Berat Sampah</string>
+    <string name="alamat_rumah">Alamat Rumah</string>
 
     <string-array name="kategori_sampah">
-        <item>Plastik</item>
-        <item>Logam</item>
-        <item>Kertas</item>
-        <item>Karet</item>
+        <item>Botol</item>
+        <item>Plastik Daun</item>
+        <item>Kertas HVS</item>
+        <item>Kertas Duplek</item>
+        <item>Kertas Buram</item>
+        <item>Gelas Aqua</item>
+        <item>Ale-ale</item>
     </string-array>
     <string-array name="harga_perkilo">
-        <item>1500</item>
+        <item>2000</item>
+        <item>250</item>
+        <item>2500</item>
+        <item>500</item>
+        <item>1000</item>
         <item>3000</item>
-        <item>800</item>
         <item>1000</item>
     </string-array>
 </resources>
