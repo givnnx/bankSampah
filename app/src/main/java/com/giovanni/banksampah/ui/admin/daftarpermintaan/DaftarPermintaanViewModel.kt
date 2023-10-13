@@ -1,6 +1,7 @@
 package com.giovanni.banksampah.ui.admin.daftarpermintaan
 
 import android.app.Application
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.repository.Repository
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -56,5 +58,17 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
             .addOnFailureListener { e ->
                 Log.d("data", "Data Failed to Fetch")
             }
+    }
+
+    fun updateDataTerima(status:String, kategori: String, uid: String, nama:String){
+        database = Firebase.firestore
+
+        val newStatus = hashMapOf("status" to status)
+        val ref = database.collection(kategori).document(uid)
+        ref.update("status", status)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+        val userRef = database.collection(nama).document(uid)
+        userRef.update("status", to status)
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
     }
 }
