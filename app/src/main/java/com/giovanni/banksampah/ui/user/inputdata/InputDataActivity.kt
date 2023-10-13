@@ -90,6 +90,16 @@ class InputDataActivity : AppCompatActivity() {
                         3 -> {
                             inputHarga.hint = "Rp. ${strHarga[position]}"
                         }
+                        4 -> {
+                            inputHarga.hint = "Rp. ${strHarga[position]}"
+                        }
+                        5 -> {
+                            inputHarga.hint = "Rp. ${strHarga[position]}"
+                        }
+                        6 -> {
+                            inputHarga.hint = "Rp. ${strHarga[position]}"
+                        }
+
                     }
 
                     if (inputBerat.text.toString() != ""){

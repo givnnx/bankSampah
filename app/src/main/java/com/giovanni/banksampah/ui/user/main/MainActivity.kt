@@ -1,12 +1,7 @@
 package com.giovanni.banksampah.ui.user.main
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.giovanni.banksampah.databinding.ActivityMainBinding
 import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
