@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.AdminActivityMainBinding
+import com.giovanni.banksampah.ui.admin.adminprofile.AdminProfileActivity
 import com.giovanni.banksampah.ui.admin.daftarpermintaan.DaftarPermintaanActivity
 import com.giovanni.banksampah.ui.admin.riwayat.AdminRiwayatActivity
-import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
-import com.giovanni.banksampah.ui.user.main.MainActivity
-import com.giovanni.banksampah.ui.user.riwayat.RiwayatActivity
 
 class AdminMainActivity : AppCompatActivity() {
     private lateinit var binding: AdminActivityMainBinding
@@ -30,6 +28,12 @@ class AdminMainActivity : AppCompatActivity() {
             }
             cvHistory.setOnClickListener{
                 val intent = Intent(this@AdminMainActivity, AdminRiwayatActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        binding.apply {
+            imageProfile.setOnClickListener {
+                val intent = Intent(this@AdminMainActivity, AdminProfileActivity::class.java)
                 startActivity(intent)
             }
         }

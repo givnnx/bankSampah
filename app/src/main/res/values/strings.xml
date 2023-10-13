@@ -54,6 +54,7 @@
     <string name="kategori_sampah">Kategori Sampah</string>
     <string name="berat_sampah">Berat Sampah</string>
     <string name="alamat_rumah">Alamat Rumah</string>
+    <string name="riwayat_anda">Riwayat Anda</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>

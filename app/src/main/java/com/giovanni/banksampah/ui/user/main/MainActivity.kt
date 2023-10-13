@@ -10,7 +10,9 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.giovanni.banksampah.databinding.ActivityMainBinding
 import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
+import com.giovanni.banksampah.ui.user.jenissampah.JenisSampahActivity
 import com.giovanni.banksampah.ui.user.riwayat.RiwayatActivity
+import com.giovanni.banksampah.ui.user.userprofile.UserProfileActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setNavigation()
         val userData = intent.getStringExtra(EXTRA_USER)
         binding.username.text = userData
+
     }
 
     private fun setNavigation() {
@@ -31,6 +34,16 @@ class MainActivity : AppCompatActivity() {
             }
             cvHistory.setOnClickListener{
                 val intent = Intent(this@MainActivity, RiwayatActivity::class.java)
+                startActivity(intent)
+            }
+            cvKategori.setOnClickListener{
+                val intent = Intent(this@MainActivity, JenisSampahActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        binding.apply {
+            imageProfile.setOnClickListener {
+                val intent = Intent(this@MainActivity, UserProfileActivity::class.java)
                 startActivity(intent)
             }
         }
