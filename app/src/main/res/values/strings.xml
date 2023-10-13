@@ -48,6 +48,7 @@
     <string name="belum_punya_akun_1">Belum punya akun?</string>
     <string name="email_name">Email</string>
     <string name="password_name">Password</string>
+    <string name="daftar_permintaan">Permintaan</string>
 
     <string-array name="kategori_sampah">
         <item>Plastik</item>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
@@ -11,7 +12,7 @@
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,31 +22,40 @@
             android:id="@+id/tvNama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Nama"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:text="Nama"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
+            android:text="Nama"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNama" />
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="7dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            tools:layout_editor_absoluteX="15dp">
 
             <TextView
                 android:id="@+id/tvKategori"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:text="Nama"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -61,6 +71,7 @@
                     android:id="@+id/tvBerat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Nama"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -75,23 +86,27 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvStatus"
+        <Button
+            android:id="@+id/btn_terima"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#4CAF50"
+            android:text="Terima"
+            app:cornerRadius="30px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_tolak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#F44336"
+            android:text="Tolak"
+            app:cornerRadius="30px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <ImageView
-        android:id="@+id/imageDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="15dp"
-        android:src="@drawable/ic_delete"
-        app:tint="@color/colorPrimary" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
