@@ -58,7 +58,7 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                             activity.finish()
                         } else if (level == "admin") {
                             val intent = Intent(activity, AdminMainActivity::class.java)
-                            intent.putExtra(MainActivity.EXTRA_USER, name)
+                            intent.putExtra(AdminMainActivity.EXTRA_USER, name)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                             activity.startActivity(intent)
                             activity.finish()
