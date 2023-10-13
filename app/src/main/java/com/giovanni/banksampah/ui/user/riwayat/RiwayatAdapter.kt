@@ -24,13 +24,14 @@ class RiwayatAdapter(val listRiwayat: List<Model>, private val viewModel: Riwaya
             tvKategori.text = "Sampah " + riwayat.jenisSampah
             tvBerat.text = "Berat : " + riwayat.berat.toString() + " Kg"
             tvSaldo.text = "Pendapatan : " + rupiahFormat(riwayat.harga)
+            tvStatus.text = riwayat.status
 
-            if (riwayat.berat > 5) {
+            if (riwayat.status == "Belum diterima") {
                 tvStatus.setTextColor(Color.RED)
-                tvStatus.text = "Masih dalam proses"
+            } else if (riwayat.status == "Diproses") {
+                tvStatus.setTextColor(Color.YELLOW)
             } else {
                 tvStatus.setTextColor(Color.GREEN)
-                tvStatus.text = "Telah dikonfirmasi"
             }
 
             imageDelete.setOnClickListener{

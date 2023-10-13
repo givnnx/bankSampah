@@ -27,6 +27,7 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
             tvKategori.text = "Sampah " + permintaan.jenisSampah
             tvBerat.text = "Berat : " + permintaan.berat.toString() + " Kg"
             tvSaldo.text = "Pendapatan : " + Helper.rupiahFormat(permintaan.harga)
+            tvStatus.text = permintaan.status
 
             btnTerima.setOnClickListener {
                 btnTerima.visibility = View.GONE
