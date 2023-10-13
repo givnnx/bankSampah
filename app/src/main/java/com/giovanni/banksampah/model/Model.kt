@@ -31,5 +31,8 @@ data class Model(
     var catatan: String,
 
     @ColumnInfo(name = "status")
-    var status: String
+    var status: String,
+
+    @ColumnInfo(name = "id_pengguna")
+    var idPengguna: String
 )

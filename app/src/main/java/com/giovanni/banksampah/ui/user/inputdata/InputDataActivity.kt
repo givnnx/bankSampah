@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
@@ -158,14 +159,19 @@ class InputDataActivity : AppCompatActivity() {
                 val berat = inputBerat.text.toString().toInt()
                 val harga = calTotal
                 val tanggal = inputTanggal.text.toString()
-                val alamat = inputAlamat.text.toString()
                 val catatan = inputTambahan.text.toString()
                 var nama = "Nama"
+                var alamat = "alamat"
                 val status = "Belum diterima"
+                var idPengguna = ""
                 viewModel.getUser().observe(this@InputDataActivity) {
                     nama = it.username
+                    alamat = it.alamat
+                    idPengguna = it.uid
+                    Log.d("Nama", nama)
+                    Log.d("alamat", alamat)
                 }
-                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity, status)
+                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity, status, idPengguna)
             }
         }
     }

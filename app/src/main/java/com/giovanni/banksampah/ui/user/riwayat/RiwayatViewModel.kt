@@ -39,7 +39,7 @@ class RiwayatViewModel(application: Application, private val pref: UserPreferenc
                     val alamat = subcollectionData?.get("alamat").toString()
                     val catatan = subcollectionData?.get("catatan").toString()
                     val status = subcollectionData?.get("status").toString()
-                    Log.d("subcollection_data", subcollectionData.toString())
+                    val idPengguna = subcollectionData?.get("idPengguna").toString()
 
                     val user = Model(
                         uid = uid,
@@ -50,7 +50,8 @@ class RiwayatViewModel(application: Application, private val pref: UserPreferenc
                         tanggal = tanggal,
                         alamat = alamat,
                         catatan = catatan,
-                        status = status
+                        status = status,
+                        idPengguna = idPengguna
                     )
                     repository.insert(user)
                 }

@@ -5,7 +5,9 @@ data class UserModel(
     val username: String,
     val email: String,
     val level: String,
+    val alamat: String,
+    val saldo: Long,
     val loginState: Boolean
 ) {
-    constructor() : this("", "", "", "", false)
+    constructor() : this("", "", "", "", "", 0 ,  false)
 }

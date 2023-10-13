@@ -47,7 +47,7 @@ class DaftarPermintaanActivity : AppCompatActivity() {
         return ViewModelProvider(activity, factory)[DaftarPermintaanViewModel::class.java]
     }
     private fun setUsers(items: List<Model>){
-        val adapter = DaftarPermintaanAdapter(items, viewModel)
+        val adapter = DaftarPermintaanAdapter(items, viewModel, this)
         binding.rvDaftarPermintaan.adapter = adapter
     }
 

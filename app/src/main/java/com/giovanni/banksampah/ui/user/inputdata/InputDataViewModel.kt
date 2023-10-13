@@ -30,7 +30,7 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
         return pref.gettingUser().asLiveData()
     }
 
-    fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity, status: String){
+    fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity, status: String, idPengguna: String){
         CoroutineScope(Dispatchers.IO).launch {
             database = Firebase.firestore
             val uid = UUID.randomUUID().toString()
@@ -43,7 +43,8 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
                 tanggal = tanggal,
                 alamat = alamat,
                 catatan = catatan,
-                status = status
+                status = status,
+                idPengguna = idPengguna
             )
             val docRef = database.collection(nama).document(uid)
             docRef.set(user)

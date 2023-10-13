@@ -49,7 +49,10 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                     .addOnSuccessListener { result ->
                         val name = result.data!!["username"].toString()
                         val level = result.data!!["level"].toString()
-                        saveUser(UserModel(userUid, name, email, level, true))
+                        val alamat = result.data!!["alamat"].toString()
+                        val saldo = result.data!!["saldo"].toString().toLong()
+                        Log.d("LOGIN", alamat )
+                        saveUser(UserModel(userUid, name, email, level ,alamat ,saldo , true))
                         if (level == "user") {
                             val intent = Intent(activity, MainActivity::class.java)
                             intent.putExtra(MainActivity.EXTRA_USER, name)

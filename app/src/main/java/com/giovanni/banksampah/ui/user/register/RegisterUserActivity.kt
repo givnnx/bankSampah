@@ -36,6 +36,7 @@ class RegisterUserActivity : AppCompatActivity() {
                 val username = edUsername.text.toString()
                 val email = edEmail.text.toString()
                 val password = edPassword.text.toString()
+                val alamat = edAddress.text.toString()
 
                 if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
                     firebaseAuth.createUserWithEmailAndPassword(email, password). addOnCompleteListener{
@@ -47,6 +48,8 @@ class RegisterUserActivity : AppCompatActivity() {
                                     username = username,
                                     email = email,
                                     level = "user",
+                                    alamat = alamat,
+                                    saldo = 0,
                                     loginState = false
                                 )
 
