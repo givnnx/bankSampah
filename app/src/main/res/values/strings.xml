@@ -39,7 +39,7 @@
     <string name="log_out_image">Log Out Image</string>
     <string name="about_image">About Image</string>
     <string name="arrow">To the next Layout</string>
-    <string name="log_in_btn">Login Button</string>
+    <string name="log_in_btn">Login</string>
     <string name="masukkan_email">Masukkan email</string>
     <string name="masukkan_password">Masukkan password</string>
     <string name="login_page">Login</string>
