@@ -31,6 +31,23 @@
     <string name="about">About</string>
     <string name="log_out">Log Out</string>
     <string name="sisa_saldo">Saldo: Rp100.00</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="account_username">Giorno</string>
+    <string name="app_logo">App Logo</string>
+    <string name="pass_image">Pass Image</string>
+    <string name="log_out_image">Log Out Image</string>
+    <string name="about_image">About Image</string>
+    <string name="arrow">To the next Layout</string>
+    <string name="log_in_btn">Login Button</string>
+    <string name="masukkan_email">Masukkan email</string>
+    <string name="masukkan_password">Masukkan password</string>
+    <string name="login_page">Login</string>
+    <string name="app_name1">E - BaTrash</string>
+    <string name="daftar_btn">Daftar</string>
+    <string name="belum_punya_akun_1">Belum punya akun?</string>
+    <string name="email_name">Email</string>
+    <string name="password_name">Password</string>
 
     <string-array name="kategori_sampah">
         <item>Plastik</item>

@@ -15,9 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BankSampah"
         tools:targetApi="31">
-        <activity
-            android:name=".activity_register_account"
-            android:exported="false" />
+
         <activity
             android:name=".activity_user_profile"
             android:exported="false" />

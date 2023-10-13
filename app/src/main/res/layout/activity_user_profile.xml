@@ -12,6 +12,7 @@
     <!-- User Profile Photo -->
     <ImageView
         android:id="@+id/userProfilePhoto"
+        android:contentDescription="@string/profile_icon"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/ic_profile"
@@ -53,61 +54,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_account">
 
         <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="12dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/linearLayoutEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/ivEdit"
-            app:layout_constraintEnd_toStartOf="@+id/ivForward"
-            app:layout_constraintStart_toEndOf="@+id/ivEdit"
-            app:layout_constraintTop_toTopOf="@+id/ivEdit">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edit_address"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:alpha="0.5"
-                android:text="@string/tap_edit"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/ivForward"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_forward"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayoutEdit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayoutEdit" />
-
-        <ImageView
             android:id="@+id/ivLock"
+            android:contentDescription="@string/pass_image"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="12dp"
             android:padding="5dp"
             android:src="@drawable/ic_lock"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivEdit" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayoutgp"
@@ -138,6 +93,7 @@
 
         <ImageView
             android:id="@+id/ivForward2"
+            android:contentDescription="@string/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -148,6 +104,7 @@
 
         <ImageView
             android:id="@+id/ivQuestion"
+            android:contentDescription="@string/about_image"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="12dp"
@@ -177,6 +134,7 @@
 
         <ImageView
             android:id="@+id/ivForward3"
+            android:contentDescription="@string/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -186,6 +144,7 @@
             app:layout_constraintTop_toTopOf="@+id/bantuanLayout" />
         <ImageView
             android:id="@+id/ivLogout"
+            android:contentDescription="@string/log_out_image"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="12dp"
@@ -216,6 +175,7 @@
 
         <ImageView
             android:id="@+id/ivForward4"
+            android:contentDescription="@string/arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
