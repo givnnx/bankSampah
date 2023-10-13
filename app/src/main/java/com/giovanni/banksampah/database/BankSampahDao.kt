@@ -11,6 +11,8 @@ import com.giovanni.banksampah.model.Model
 interface BankSampahDao {
     @Query("SELECT * FROM db_banksampah")
     fun getAll(): LiveData<List<Model>>
+    @Query("SELECT * FROM db_banksampah WHERE status = :status")
+    fun getDatabyStatus(status: String): LiveData<List<Model>>
 
     @Query("SELECT SUM(harga) FROM db_banksampah")
     fun getSaldo(): LiveData<Int>

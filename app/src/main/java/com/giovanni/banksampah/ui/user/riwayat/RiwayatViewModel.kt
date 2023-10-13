@@ -38,6 +38,7 @@ class RiwayatViewModel(application: Application, private val pref: UserPreferenc
                     val tanggal = subcollectionData?.get("tanggal").toString()
                     val alamat = subcollectionData?.get("alamat").toString()
                     val catatan = subcollectionData?.get("catatan").toString()
+                    val status = subcollectionData?.get("status").toString()
                     Log.d("subcollection_data", subcollectionData.toString())
 
                     val user = Model(
@@ -48,7 +49,8 @@ class RiwayatViewModel(application: Application, private val pref: UserPreferenc
                         harga = harga,
                         tanggal = tanggal,
                         alamat = alamat,
-                        catatan = catatan
+                        catatan = catatan,
+                        status = status
                     )
                     repository.insert(user)
                 }

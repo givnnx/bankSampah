@@ -17,7 +17,7 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
     private lateinit var database: FirebaseFirestore
     private val repository: Repository = Repository(application)
 
-    val daftar = repository.getData()
+    val daftar = repository.getDatabyStatus("Belum diterima")
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
     }
@@ -36,6 +36,7 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                     val tanggal = subcollectionData?.get("tanggal").toString()
                     val alamat = subcollectionData?.get("alamat").toString()
                     val catatan = subcollectionData?.get("catatan").toString()
+                    val status = subcollectionData?.get("status").toString()
                     Log.d("subcollection_data", subcollectionData.toString())
 
                     val user = Model(
@@ -46,7 +47,8 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                         harga = harga,
                         tanggal = tanggal,
                         alamat = alamat,
-                        catatan = catatan
+                        catatan = catatan,
+                        status = status
                     )
                     repository.insert(user)
                 }
