@@ -25,6 +25,10 @@ class Repository(application: Application) {
         return daoBS.getAll()
     }
 
+    fun getDatabyStatus(status: String): LiveData<List<Model>> {
+        return daoBS.getDatabyStatus(status)
+    }
+
     fun deleteData(uid: String){
         executor.execute{daoBS.deleteSingleData(uid)}
     }

@@ -151,10 +151,11 @@ class InputDataActivity : AppCompatActivity() {
                 val alamat = inputAlamat.text.toString()
                 val catatan = inputTambahan.text.toString()
                 var nama = "Nama"
+                val status = "Belum diterima"
                 viewModel.getUser().observe(this@InputDataActivity) {
                     nama = it.username
                 }
-                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity)
+                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity, status)
             }
         }
     }

@@ -28,5 +28,8 @@ data class Model(
     var alamat: String,
 
     @ColumnInfo(name = "catatan")
-    var catatan: String
+    var catatan: String,
+
+    @ColumnInfo(name = "status")
+    var status: String
 )
