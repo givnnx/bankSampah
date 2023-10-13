@@ -11,7 +11,6 @@ import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.repository.Repository
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -68,7 +67,7 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
         ref.update("status", status)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
         val userRef = database.collection(nama).document(uid)
-        userRef.update("status", to status)
+        userRef.update("status", status)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
     }
 }
