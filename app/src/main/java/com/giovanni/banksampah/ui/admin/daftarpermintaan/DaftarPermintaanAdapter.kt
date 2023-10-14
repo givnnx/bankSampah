@@ -76,9 +76,9 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                         tvStatus.text = permintaan.status
                         tvStatus.setTextColor(Color.GREEN)
                         Log.d("adapter_id", permintaan.idPengguna)
-                        viewModel.updateSaldo(permintaan.idPengguna, permintaan.harga.toLong())
                     }
                 }
+                viewModel.updateSaldo(permintaan.idPengguna, permintaan.harga.toLong())
             }
         }
     }

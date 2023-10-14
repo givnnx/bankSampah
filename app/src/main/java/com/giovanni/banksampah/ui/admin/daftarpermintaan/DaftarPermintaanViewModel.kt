@@ -24,7 +24,6 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
         get() = _state
 
     val daftar = repository.getDatabyStatus("Belum diterima")
-    var saldo:Long = 0
 
     fun updateState(newState: Int) {
         _state.value = newState
@@ -89,12 +88,12 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
         val ref = database.collection("users").document(uid)
         ref.get()
             .addOnSuccessListener {
-                saldo = it.data?.get("saldo").toString().toLong()
+                val saldo = it.data?.get("saldo").toString().toLong()
+                val saldoBaru = saldo + pemasukan
+                Log.d("Saldo", saldo.toString())
+                Log.d("pemasukan", pemasukan.toString())
+                Log.d("Saldo Baru", saldoBaru.toString())
+                ref.update("saldo", saldoBaru)
             }
-        val saldoBaru = saldo + pemasukan
-        Log.d("Saldo", saldo.toString())
-        Log.d("pemasukan", pemasukan.toString())
-        Log.d("Saldo Baru", saldoBaru.toString())
-        ref.update("saldo", saldoBaru)
     }
 }
