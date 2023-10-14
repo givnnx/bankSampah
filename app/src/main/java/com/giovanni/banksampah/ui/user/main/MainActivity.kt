@@ -8,10 +8,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.giovanni.banksampah.JenisSampahActivity
 import com.giovanni.banksampah.databinding.ActivityMainBinding
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
-import com.giovanni.banksampah.ui.user.jenissampah.JenisSampahActivity
 import com.giovanni.banksampah.ui.user.riwayat.RiwayatActivity
 import com.giovanni.banksampah.ui.user.userprofile.UserProfileActivity
 
