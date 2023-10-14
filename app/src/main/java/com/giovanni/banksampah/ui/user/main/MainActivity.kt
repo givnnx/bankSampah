@@ -3,6 +3,7 @@ package com.giovanni.banksampah.ui.user.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.ui.user.jenissampah.JenisSampahActivity
 import com.giovanni.banksampah.databinding.ActivityMainBinding
+import com.giovanni.banksampah.helper.Helper
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.user.inputdata.InputDataActivity
 import com.giovanni.banksampah.ui.user.riwayat.RiwayatActivity
@@ -29,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getUser().observe(this) {
             binding.username.text = it.username
         }
-
+        setAction()
     }
 
     private fun getViewModel(){
@@ -59,6 +61,13 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, UserProfileActivity::class.java)
                 startActivity(intent)
             }
+        }
+    }
+
+    private fun setAction() {
+        viewModel.getUser().observe(this) {
+            Log.d("Saldo", it.saldo.toString())
+            binding.tvSaldoMain.text = Helper.rupiahFormat(it.saldo.toInt())
         }
     }
 

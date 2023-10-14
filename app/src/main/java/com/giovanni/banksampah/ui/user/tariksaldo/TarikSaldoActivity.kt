@@ -3,6 +3,8 @@ package com.giovanni.banksampah.ui.user.tariksaldo
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -10,6 +12,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.databinding.ActivityTarikSaldoBinding
+import com.giovanni.banksampah.helper.Helper
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.user.main.MainActivity
 
@@ -24,6 +27,7 @@ class TarikSaldoActivity : AppCompatActivity() {
         setContentView(binding.root)
         getViewModel()
         setAction()
+        setToolbar()
     }
 
     private fun getViewModel() {
@@ -46,5 +50,25 @@ class TarikSaldoActivity : AppCompatActivity() {
                 }
             }
         }
+        viewModel.getUser().observe(this) {
+            Log.d("Saldo", it.saldo.toString())
+            binding.tvSaldoTarik.text = Helper.rupiahFormat(it.saldo.toInt())
+        }
+    }
+
+    private fun setToolbar() {
+        setSupportActionBar(binding.toolbarTariktunai)
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowTitleEnabled(false)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

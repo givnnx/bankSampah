@@ -20,7 +20,7 @@
     <string name="category">Menu Kategori</string>
     <string name="admin_login_btn">Admin</string>
     <string name="riwayat_penerimaan">Riwayat Penerimaan</string>
-    <string name="saldo_amp_riwayat"><![CDATA[Saldo & Riwayat]]></string>
+    <string name="riwayat">Riwayat</string>
     <string name="jenis_sampah">Jenis Sampah</string>
     <string name="jemput_sampah">Jemput Sampah</string>
     <string name="account">Account</string>
@@ -97,6 +97,9 @@
     <string name="harga_gelas_aqua">Rp 3.000</string>
     <string name="ale_ale">Ale-ale: </string>
     <string name="harga_ale_ale">Rp 1.000</string>
+    <string name="no_riwayat">Oops, riwayat masih kosong!</string>
+    <string name="saldo_anda">Saldo Anda :</string>
+    <string name="riwayat_user">Riwayat Anda</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
