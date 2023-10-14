@@ -3,6 +3,7 @@ package com.giovanni.banksampah.ui.user.userprofile
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.databinding.ActivityUserProfileBinding
+import com.giovanni.banksampah.helper.Helper.rupiahFormat
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.login.LoginActivity
 
@@ -54,6 +56,10 @@ class UserProfileActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(logout)
             finish()
+        }
+        viewModel.getUser().observe(this) {
+            Log.d("Saldo", it.saldo.toString())
+            binding.balanceInfo.text = rupiahFormat(it.saldo.toInt())
         }
     }
 }

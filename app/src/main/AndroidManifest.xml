@@ -16,10 +16,10 @@
         android:theme="@style/Theme.BankSampah"
         tools:targetApi="31">
         <activity
-            android:name=".JenisSampahActivity"
+            android:name=".ui.user.jenissampah.JenisSampahActivity"
             android:exported="false" />
         <activity
-            android:name=".TarikSaldoActivity"
+            android:name=".ui.user.tariksaldo.TarikSaldoActivity"
             android:exported="false" />
         <activity
             android:name=".ui.admin.adminprofile.AdminProfileActivity"

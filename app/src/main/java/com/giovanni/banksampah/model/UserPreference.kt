@@ -32,6 +32,7 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
             preferences[EMAIL_KEY] = user.email
             preferences[LEVEL_KEY] = user.level
             preferences[ALAMAT_KEY] = user.alamat
+            preferences[SALDO_KEY] = user.saldo
             preferences[STATE_KEY] = user.loginState
         }
     }
