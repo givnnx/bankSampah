@@ -69,6 +69,19 @@
     <string name="tbl_jemput">Jemput Sekarang</string>
     <string name="info_icon">info icon</string>
     <string name="drop_down_icon">drop down icon</string>
+    <string name="tarik_saldo">Tarik Saldo</string>
+    <string name="tarik_saldo_judul">Tarik Saldo</string>
+    <string name="contoh_nominal">Enter withdrawal amount</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="tarik_saldo_bar">Tarik Saldo</string>
+    <string name="tanggal_pengambilan">Tanggal Pengambilan</string>
+    <string name="kategori_sampah_item">Kategori Sampah</string>
+    <string name="alamat_pengambilan">Alamat Pengambilan</string>
+    <string name="belum_diterima">Belum diterima</string>
+    <string name="terima">Terima</string>
+    <string name="tolak">Tolak</string>
+    <string name="verifikasi">Verifikasi</string>
+    <string name="batalkan">Batalkan</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
