@@ -10,6 +10,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.giovanni.banksampah.ui.user.about.AboutActivity
 import com.giovanni.banksampah.databinding.ActivityUserProfileBinding
 import com.giovanni.banksampah.helper.Helper.rupiahFormat
 import com.giovanni.banksampah.model.UserPreference
@@ -56,6 +57,10 @@ class UserProfileActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(logout)
             finish()
+        }
+        binding.bantuanLayout.setOnClickListener {
+            val intent = Intent(this@UserProfileActivity, AboutActivity::class.java)
+            startActivity(intent)
         }
         viewModel.getUser().observe(this) {
             Log.d("Saldo", it.saldo.toString())

@@ -24,10 +24,6 @@
     <string name="jenis_sampah">Jenis Sampah</string>
     <string name="jemput_sampah">Jemput Sampah</string>
     <string name="account">Account</string>
-    <string name="edit_address">Edit Address</string>
-    <string name="tap_edit">Tap to Edit Your Address</string>
-    <string name="change_password">Change Password</string>
-    <string name="tap_change">Tap to Change Your Password</string>
     <string name="about">About</string>
     <string name="log_out">Log Out</string>
     <string name="sisa_saldo">Saldo: Rp100.00</string>
@@ -71,8 +67,8 @@
     <string name="drop_down_icon">drop down icon</string>
     <string name="tarik_saldo">Tarik Saldo</string>
     <string name="tarik_saldo_judul">Tarik Saldo</string>
-    <string name="contoh_nominal">Enter withdrawal amount</string>
-    <string name="withdraw">Withdraw</string>
+    <string name="contoh_nominal">Masukan Jumlah Penarikan Anda</string>
+    <string name="withdraw">Tarik Tunai</string>
     <string name="tarik_saldo_bar">Tarik Saldo</string>
     <string name="tanggal_pengambilan">Tanggal Pengambilan</string>
     <string name="kategori_sampah_item">Kategori Sampah</string>
@@ -100,6 +96,10 @@
     <string name="no_riwayat">Oops, riwayat masih kosong!</string>
     <string name="saldo_anda">Saldo Anda :</string>
     <string name="riwayat_user">Riwayat Anda</string>
+    <string name="about_page">About</string>
+    <string name="app_version">Version 1.0.0</string>
+    <string name="user_splash">App User Splash</string>
+    <string name="admin_splash">App Admin Splash</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
