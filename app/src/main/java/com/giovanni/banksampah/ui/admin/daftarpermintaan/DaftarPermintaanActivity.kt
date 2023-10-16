@@ -37,8 +37,13 @@ class DaftarPermintaanActivity : AppCompatActivity() {
         binding.rvDaftarPermintaan.layoutManager = LinearLayoutManager(this)
         binding.rvDaftarPermintaan.setHasFixedSize(true)
 
-        viewModel.daftar.observe(this) {
-            setUsers(it)
+        viewModel.daftar2.observe(this) {
+            val mergedData = mutableListOf<Model>()
+            mergedData.addAll(it)
+            viewModel.daftar.observe(this){
+                mergedData.addAll(it)
+                setUsers(mergedData)
+            }
         }
     }
 

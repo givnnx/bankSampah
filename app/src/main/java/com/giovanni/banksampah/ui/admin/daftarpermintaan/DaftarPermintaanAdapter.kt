@@ -32,19 +32,50 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
             tvBerat.text = "Berat : " + permintaan.berat.toString() + " Kg"
             tvSaldo.text = "Pendapatan : " + Helper.rupiahFormat(permintaan.harga)
             tvAlamat.text = permintaan.alamat
+            tvStatus.text = permintaan.status
 
+            fun diproses(){
+                btnTerima.visibility = View.GONE
+                btnTolak.visibility = View.GONE
+                btnVerifikasi.visibility = View.VISIBLE
+                btnBatal.visibility = View.VISIBLE
+                tvStatus.text = permintaan.status
+                tvStatus.setTextColor(Color.parseColor("#f1c232"))
+            }
+
+            fun belumDiterima(){
+                btnTerima.visibility = View.VISIBLE
+                btnTolak.visibility = View.VISIBLE
+                btnVerifikasi.visibility = View.GONE
+                btnBatal.visibility = View.GONE
+                tvStatus.setTextColor(Color.RED)
+                tvStatus.text = permintaan.status
+            }
+
+            fun diterima(){
+                btnTerima.visibility = View.GONE
+                btnTolak.visibility = View.GONE
+                btnVerifikasi.visibility = View.GONE
+                btnBatal.visibility = View.GONE
+                tvStatus.text = permintaan.status
+                tvStatus.setTextColor(Color.GREEN)
+                Log.d("adapter_id", permintaan.idPengguna)
+            }
+
+            if (tvStatus.text == "Diproses"){
+                diproses()
+            } else if (tvStatus.text == "Diterima"){
+                diterima()
+            } else {
+                belumDiterima()
+            }
 
             btnTerima.setOnClickListener {
                 permintaan.status = "Diproses"
                 viewModel.updateDataTerima(permintaan.status, permintaan.jenisSampah, permintaan.uid, permintaan.namaPengguna)
                 viewModel.state.observe(context as LifecycleOwner) {
                     if (it == 1) {
-                        btnTerima.visibility = View.GONE
-                        btnTolak.visibility = View.GONE
-                        btnVerifikasi.visibility = View.VISIBLE
-                        btnBatal.visibility = View.VISIBLE
-                        tvStatus.text = permintaan.status
-                        tvStatus.setTextColor(Color.parseColor("#f1c232"))
+                        diproses()
                     }
                 }
             }
@@ -54,12 +85,7 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                 viewModel.updateDataTerima(permintaan.status, permintaan.jenisSampah, permintaan.uid, permintaan.namaPengguna)
                 viewModel.state.observe(context as LifecycleOwner) {
                     if (it == 1) {
-                        btnTerima.visibility = View.VISIBLE
-                        btnTolak.visibility = View.VISIBLE
-                        btnVerifikasi.visibility = View.GONE
-                        btnBatal.visibility = View.GONE
-                        tvStatus.setTextColor(Color.RED)
-                        tvStatus.text = permintaan.status
+                        belumDiterima()
                     }
                 }
             }
@@ -69,13 +95,7 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                 viewModel.updateDataTerima(permintaan.status, permintaan.jenisSampah, permintaan.uid, permintaan.namaPengguna)
                 viewModel.state.observe(context as LifecycleOwner) {
                     if (it == 1) {
-                        btnTerima.visibility = View.GONE
-                        btnTolak.visibility = View.GONE
-                        btnVerifikasi.visibility = View.GONE
-                        btnBatal.visibility = View.GONE
-                        tvStatus.text = permintaan.status
-                        tvStatus.setTextColor(Color.GREEN)
-                        Log.d("adapter_id", permintaan.idPengguna)
+                        diterima()
                     }
                 }
                 viewModel.updateSaldo(permintaan.idPengguna, permintaan.harga.toLong())

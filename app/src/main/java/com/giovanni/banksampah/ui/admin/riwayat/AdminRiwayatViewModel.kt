@@ -1,10 +1,8 @@
-package com.giovanni.banksampah.ui.admin.daftarpermintaan
+package com.giovanni.banksampah.ui.admin.riwayat
 
 import android.app.Application
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.giovanni.banksampah.model.Model
@@ -15,29 +13,21 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class DaftarPermintaanViewModel(application: Application, private val pref: UserPreference): ViewModel() {
+class AdminRiwayatViewModel(application: Application, private val pref:UserPreference):ViewModel() {
     private lateinit var database: FirebaseFirestore
     private val repository: Repository = Repository(application)
-    private val _state = MutableLiveData<Int>()
 
-    val state: LiveData<Int>
-        get() = _state
+    val daftar = repository.getDatabyStatus("Diterima")
 
-    val daftar = repository.getDatabyStatus("Belum diterima")
-    val daftar2 = repository.getDatabyStatus("Diproses")
-
-    fun updateState(newState: Int) {
-        _state.value = newState
-    }
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
     }
+
     fun fetchData(kategori:String){
         database = Firebase.firestore
         val ref = database.collection(kategori)
         ref.get()
             .addOnSuccessListener {
-                updateState(1)
                 for (document in it.documents) {
                     val subcollectionData = document.data
                     val uid = subcollectionData?.get("uid").toString()
@@ -68,33 +58,7 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                 }
             }
             .addOnFailureListener { e ->
-                updateState(0)
                 Log.d("data", "Data Failed to Fetch")
-            }
-    }
-
-    fun updateDataTerima(status:String, kategori: String, uid: String, nama:String){
-        database = Firebase.firestore
-
-        val ref = database.collection(kategori).document(uid)
-        ref.update("status", status)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-        val userRef = database.collection(nama).document(uid)
-        userRef.update("status", status)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-    }
-
-    fun updateSaldo(uid: String, pemasukan: Long){
-        database = Firebase.firestore
-        val ref = database.collection("users").document(uid)
-        ref.get()
-            .addOnSuccessListener {
-                val saldo = it.data?.get("saldo").toString().toLong()
-                val saldoBaru = saldo + pemasukan
-                Log.d("Saldo", saldo.toString())
-                Log.d("pemasukan", pemasukan.toString())
-                Log.d("Saldo Baru", saldoBaru.toString())
-                ref.update("saldo", saldoBaru)
             }
     }
 }
