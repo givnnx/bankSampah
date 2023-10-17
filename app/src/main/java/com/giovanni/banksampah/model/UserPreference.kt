@@ -42,6 +42,12 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
         }
     }
 
+    suspend fun saveBalance(balance: Long){
+        datastore.edit { preferences ->
+            preferences[SALDO_KEY] = balance
+        }
+    }
+
     suspend fun logout() {
         datastore.edit { preferences ->
             preferences[STATE_KEY] = false

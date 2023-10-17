@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         getViewModel()
         viewModel.getUser().observe(this) {
             binding.username.text = it.username
+            viewModel.getBalance(it.uid)
         }
         setAction()
     }
