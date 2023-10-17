@@ -44,7 +44,7 @@
     <string name="belum_punya_akun_1">Belum punya akun?</string>
     <string name="email_name">Email</string>
     <string name="password_name">Password</string>
-    <string name="daftar_permintaan">Permintaan</string>
+    <string name="daftar_permintaan">Permintaan Jemput Sampah</string>
     <string name="nama_user">Nama</string>
     <string name="tanggal_sampah">Tanggal Pendaftaran</string>
     <string name="kategori_sampah">Kategori Sampah</string>
@@ -100,6 +100,16 @@
     <string name="app_version">Version 1.0.0</string>
     <string name="user_splash">App User Splash</string>
     <string name="admin_splash">App Admin Splash</string>
+    <string name="minta_tarik">Permintaan Tarik Saldo</string>
+    <string name="kepanjangan_logo">(Elektronik Bawuran Trash)</string>
+    <string name="produk_by">by Tim PPKO Hima Fisika FMIPA UNY</string>
+    <string name="powered_by">Powered by</string>
+    <string name="gambar_himafi">Logo Himafi</string>
+    <string name="gambar_uny">Logo UNY</string>
+    <string name="gambar_bantul">Logo Bantul</string>
+    <string name="sisa_saldo_user">Sisa Saldo User:</string>
+    <string name="tanggal_permintaan">Tanggal Permintaan Tarik Saldo</string>
+    <string name="jumlah_penarikan">Jumlah Penarikan:</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
