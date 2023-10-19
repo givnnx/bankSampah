@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.giovanni.banksampah.databinding.AdminActivityMainBinding
 import com.giovanni.banksampah.ui.admin.adminprofile.AdminProfileActivity
+import com.giovanni.banksampah.ui.admin.daftarmintatariksaldo.DaftarPermintaanTarikSaldoActivity
 import com.giovanni.banksampah.ui.admin.daftarpermintaan.DaftarPermintaanActivity
 import com.giovanni.banksampah.ui.admin.riwayat.AdminRiwayatActivity
 
@@ -27,6 +28,10 @@ class AdminMainActivity : AppCompatActivity() {
             }
             cvHistory.setOnClickListener{
                 val intent = Intent(this@AdminMainActivity, AdminRiwayatActivity::class.java)
+                startActivity(intent)
+            }
+            cvmintatarikSaldo.setOnClickListener {
+                val intent = Intent(this@AdminMainActivity, DaftarPermintaanTarikSaldoActivity::class.java)
                 startActivity(intent)
             }
         }

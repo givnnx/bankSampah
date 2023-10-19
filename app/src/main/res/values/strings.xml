@@ -6,7 +6,7 @@
     <string name="daftar">Daftar</string>
     <string name="belum_punya_akun">Belum punya akun?</string>
     <string name="login">Login</string>
-    <string name="register">Register</string>
+    <string name="register">Daftar</string>
     <string name="username">Username</string>
     <string name="email_register">Email</string>
     <string name="password_register">Password</string>
