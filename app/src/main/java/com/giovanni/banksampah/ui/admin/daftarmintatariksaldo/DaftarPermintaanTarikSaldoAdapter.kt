@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.giovanni.banksampah.databinding.ItemPermintaanTariksaldoBinding
 import com.giovanni.banksampah.helper.Helper
 import com.giovanni.banksampah.model.Model
+import com.giovanni.banksampah.model.TarikSaldoModel
 
-class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<Model>, private val viewModel: DaftarPermintaanTarikSaldoViewModel, private val context: Context): RecyclerView.Adapter<DaftarPermintaanTarikSaldoAdapter.ViewHolder>() {
+class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<TarikSaldoModel>, private val viewModel: DaftarPermintaanTarikSaldoViewModel, private val context: Context): RecyclerView.Adapter<DaftarPermintaanTarikSaldoAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: ItemPermintaanTariksaldoBinding): RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +22,7 @@ class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<Model
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val permintaan = listPermintaanTarikSaldo[position]
         holder.binding.apply {
-            tvNama.text = permintaan.namaPengguna
+            tvNama.text = permintaan.username
             tvDate.text = permintaan.tanggal
             tvStatus.text = permintaan.status
         }

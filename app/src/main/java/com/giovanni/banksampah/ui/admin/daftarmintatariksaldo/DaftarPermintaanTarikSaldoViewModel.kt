@@ -18,6 +18,9 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
     val state: LiveData<Int>
         get() = _state
 
+    val daftar = repository.getDatabyStatus("Belum diterima")
+    val daftar2 = repository.getDatabyStatus("Diproses")
+
     fun updateState(newState: Int) {
         _state.value = newState
     }
