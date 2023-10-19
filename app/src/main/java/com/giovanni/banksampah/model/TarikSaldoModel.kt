@@ -13,7 +13,7 @@ data class TarikSaldoModel(
     @ColumnInfo
     val jumlah: Long,
     @ColumnInfo
-    val status: String,
+    var status: String,
     @ColumnInfo
     val tanggal: String,
     @ColumnInfo
