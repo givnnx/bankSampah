@@ -1,7 +1,7 @@
 package com.giovanni.banksampah.ui.user.tariksaldo
 
 import android.content.Context
-import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.databinding.ActivityTarikSaldoBinding
 import com.giovanni.banksampah.helper.Helper
 import com.giovanni.banksampah.model.UserPreference
-import com.giovanni.banksampah.ui.user.main.MainActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class TarikSaldoActivity : AppCompatActivity() {
@@ -42,11 +41,14 @@ class TarikSaldoActivity : AppCompatActivity() {
                     Toast.makeText(this, "Saldo anda kurang!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Menunggu konfirmasi, silahkan tunggu!", Toast.LENGTH_SHORT).show()
-                    finishAffinity()
-                    val logout = Intent(this, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(logout)
-                    finish()
+                    val calendar = Calendar.getInstance()
+                    val year = calendar.get(Calendar.YEAR)
+                    val month = calendar.get(Calendar.MONTH) + 1
+                    val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+                    val formattedDate = "$day-$month-$year"
+                    val jumlah = binding.inputPenarikan.text.toString().toLong()
+                    viewModel.sendRequest(jumlah, it.saldo, "Belum diterima", formattedDate, it.username, this, it.uid)
                 }
             }
         }

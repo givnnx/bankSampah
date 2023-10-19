@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
-import com.giovanni.banksampah.repository.Repository
+import com.giovanni.banksampah.repository.TarikSaldoRepository
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DaftarPermintaanTarikSaldoViewModel(application: Application, private val pref:UserPreference): ViewModel() {
     private lateinit var database: FirebaseFirestore
-    private val repository: Repository = Repository(application)
+    private val repository: TarikSaldoRepository = TarikSaldoRepository(application)
     private val _state = MutableLiveData<Int>()
 
     val state: LiveData<Int>

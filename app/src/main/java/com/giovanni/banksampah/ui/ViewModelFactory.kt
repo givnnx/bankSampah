@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.giovanni.banksampah.model.UserPreference
+import com.giovanni.banksampah.ui.admin.daftarmintatariksaldo.DaftarPermintaanTarikSaldoViewModel
 import com.giovanni.banksampah.ui.admin.daftarpermintaan.DaftarPermintaanViewModel
 import com.giovanni.banksampah.ui.admin.riwayat.AdminRiwayatViewModel
 import com.giovanni.banksampah.ui.user.riwayat.RiwayatViewModel
@@ -18,6 +19,8 @@ class ViewModelFactory constructor(private val mApplication: Application, privat
             return DaftarPermintaanViewModel(mApplication, pref) as T
         } else if (modelClass.isAssignableFrom(AdminRiwayatViewModel::class.java)){
             return AdminRiwayatViewModel(mApplication, pref) as T
+        } else if (modelClass.isAssignableFrom(DaftarPermintaanTarikSaldoViewModel::class.java)){
+            return DaftarPermintaanTarikSaldoViewModel(mApplication, pref) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
