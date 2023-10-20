@@ -10,6 +10,7 @@ import com.giovanni.banksampah.model.TarikSaldoModel
 import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.repository.TarikSaldoRepository
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -22,7 +23,7 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
     val state: LiveData<Int>
         get() = _state
 
-    val daftar = repository.getData()
+    val daftar = repository.getDatabyStatus("Belum diterima")
 
     fun updateState(newState: Int) {
         _state.value = newState
@@ -67,9 +68,10 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
             }
     }
 
-    fun updateSaldo(uid: String, jumlah: Long){
+    fun updateSaldo(uid: String, jumlah: Long, id: String){
         database = Firebase.firestore
         val ref = database.collection("users").document(uid)
+        val penarikanRef = database.collection("Penarikan Saldo").document(id)
         ref.get()
             .addOnSuccessListener {
                 val saldo = it.data?.get("saldo").toString().toLong()
@@ -78,6 +80,7 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
                 Log.d("pemasukan", jumlah.toString())
                 Log.d("Saldo Baru", saldoBaru.toString())
                 ref.update("saldo", saldoBaru)
+                penarikanRef.update("status", "Diterima")
             }
     }
 }

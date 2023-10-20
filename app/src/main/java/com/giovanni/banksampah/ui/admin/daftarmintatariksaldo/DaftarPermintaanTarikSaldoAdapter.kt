@@ -56,7 +56,7 @@ class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<Tarik
                 permintaan.status = "Diterima"
                 viewModel.state.observe(context as LifecycleOwner) {
                     if (it == 1) {
-                        viewModel.updateSaldo(permintaan.idPengguna, permintaan.jumlah)
+                        viewModel.updateSaldo(permintaan.idPengguna, permintaan.jumlah, permintaan.uid)
                         diterima()
                     }
                 }

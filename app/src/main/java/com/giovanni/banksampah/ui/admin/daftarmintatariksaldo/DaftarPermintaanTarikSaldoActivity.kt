@@ -37,11 +37,7 @@ class DaftarPermintaanTarikSaldoActivity : AppCompatActivity() {
         binding.rvDaftarPermintaanTarik.setHasFixedSize(true)
 
         viewModel.daftar.observe(this) {
-            val mergedData = mutableListOf<TarikSaldoModel>()
-            mergedData.addAll(it)
-            viewModel.daftar.observe(this){
-                setUsers(it)
-            }
+            setUsers(it)
         }
     }
 
