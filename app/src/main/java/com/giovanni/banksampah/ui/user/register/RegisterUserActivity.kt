@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.giovanni.banksampah.databinding.ActivityRegisterUserBinding
@@ -39,7 +40,14 @@ class RegisterUserActivity : AppCompatActivity() {
                 val alamat = edAddress.text.toString()
 
                 if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
+                    overlayView2.visibility = View.VISIBLE
+                    pbSignup.visibility = View.VISIBLE
+                    btnRegister.isEnabled = false
+
                     firebaseAuth.createUserWithEmailAndPassword(email, password). addOnCompleteListener{
+                        overlayView2.visibility = View.GONE
+                        pbSignup.visibility = View.GONE
+                        btnRegister.isEnabled = true
                         if(it.isSuccessful){
                             val user = it.result.user
                             if (user != null) {

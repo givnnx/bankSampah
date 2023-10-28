@@ -3,7 +3,9 @@ package com.giovanni.banksampah.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -22,6 +24,9 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val pref: UserPreference): ViewModel() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: FirebaseFirestore
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
     }
@@ -38,9 +43,11 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
         }
     }
     fun login(email: String, password: String, activity: Activity){
+        _isLoading.value = true
         firebaseAuth = Firebase.auth
         database = Firebase.firestore
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
+            _isLoading.value = false
             if (it.isSuccessful){
                 loginState()
                 val userUid = it.result.user?.uid.toString()
@@ -68,6 +75,8 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                         }
                         Log.d("USER LOGIN", name)
                     }
+            } else {
+                Toast.makeText(activity, "Email atau Password salah", Toast.LENGTH_SHORT).show()
             }
         }
     }

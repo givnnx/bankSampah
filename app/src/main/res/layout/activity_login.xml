@@ -283,7 +283,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -293,7 +293,8 @@
             android:id="@+id/overlayView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#80000000" />
+            android:background="#80000000"
+            android:visibility="gone"/>
 
         <ProgressBar
             android:id="@+id/pb_Signin"

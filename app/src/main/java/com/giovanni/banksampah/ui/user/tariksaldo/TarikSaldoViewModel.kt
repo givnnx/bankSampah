@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -24,19 +25,22 @@ class TarikSaldoViewModel(private val pref:UserPreference): ViewModel() {
         return pref.gettingUser().asLiveData()
     }
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun sendRequest(jumlah: Long, saldo: Long, status: String, tanggal:String, username:String, activity: Activity, idPengguna: String){
+        _isLoading.value = true
         database = Firebase.firestore
         val uid = UUID.randomUUID().toString()
         val user = TarikSaldoModel(
             uid, username, jumlah, status, tanggal, saldo, idPengguna
         )
         val ref = database.collection("Penarikan Saldo").document(uid)
-        val userRef= database.collection(username).document(uid)
         ref.set(user)
             .addOnSuccessListener {
+                _isLoading.value = false
                 Log.d("Kirim Data", "DocumentSnapshot successfully written!")
                 Toast.makeText(activity, "Permintaan Berhasil Dikirim", Toast.LENGTH_SHORT).show()
-                userRef.set(user).addOnSuccessListener { Log.d("Kirim Data 2", "DocumentSnapshot successfully written!") }
                 finishAffinity(activity)
                 val logout = Intent(activity, MainActivity::class.java)
                 logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

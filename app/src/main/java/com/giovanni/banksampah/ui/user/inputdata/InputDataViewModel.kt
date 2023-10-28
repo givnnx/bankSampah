@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -26,11 +27,14 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
     private lateinit var database: FirebaseFirestore
     private val repository: Repository = Repository(application)
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
     }
 
     fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity, status: String, idPengguna: String){
+        _isLoading.value = true
         CoroutineScope(Dispatchers.IO).launch {
             database = Firebase.firestore
             val uid = UUID.randomUUID().toString()
@@ -52,6 +56,7 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
                     Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
                     user.uid = uid
                     repository.insert(user)
+                    _isLoading.value = false
                     val intent = Intent(activity, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     activity.startActivity(intent)
@@ -63,6 +68,7 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
                 Log.d(ContentValues.TAG, "DocumentSnapshot successfully written!")
                 user.uid = uid
                 repository.insert(user)
+                _isLoading.value = false
                 val intent = Intent(activity, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 activity.startActivity(intent)

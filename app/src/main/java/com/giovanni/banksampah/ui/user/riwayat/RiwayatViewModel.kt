@@ -1,6 +1,7 @@
 package com.giovanni.banksampah.ui.user.riwayat
 
 import android.app.Application
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -30,6 +31,7 @@ class RiwayatViewModel(application: Application, private val pref: UserPreferenc
             .addOnSuccessListener {
                 for (document in it.documents) {
                     val subcollectionData = document.data
+                    Log.d(TAG, subcollectionData.toString())
                     val uid = subcollectionData?.get("uid").toString()
                     val namaPengguna = subcollectionData?.get("namaPengguna").toString()
                     val kategori = subcollectionData?.get("jenisSampah").toString()

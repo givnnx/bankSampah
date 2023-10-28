@@ -39,6 +39,9 @@ class InputDataActivity : AppCompatActivity() {
         binding = ActivityInputDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = getViewModel(this@InputDataActivity, dataStore)
+        viewModel.isLoading.observe(this){
+            showLoading(it)
+        }
         setAction()
         setToolbar()
     }
@@ -179,5 +182,19 @@ class InputDataActivity : AppCompatActivity() {
     private fun calTotal(berat: Int){
         calTotal = harga * berat
         binding.inputHarga.setText(rupiahFormat(calTotal))
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.apply {
+            if (isLoading) {
+                pbSignin.visibility = View.VISIBLE
+                overlayView.visibility = View.VISIBLE
+                btnCheckout.isEnabled = false
+            } else {
+                pbSignin.visibility = View.GONE
+                overlayView.visibility = View.GONE
+                btnCheckout.isEnabled = true
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -25,6 +26,9 @@ class TarikSaldoActivity : AppCompatActivity() {
         binding = ActivityTarikSaldoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getViewModel()
+        viewModel.isLoading.observe(this){
+            showLoading(it)
+        }
         setAction()
         setToolbar()
     }
@@ -37,7 +41,7 @@ class TarikSaldoActivity : AppCompatActivity() {
         binding.btnTarik.setOnClickListener {
             viewModel.getUser().observe(this){
                 saldo = it.saldo
-                if(binding.inputPenarikan.text.toString().toLong() > saldo){
+                if(binding.inputPenarikan.text.toString().toLong() > saldo || saldo == 0.toLong()){
                     Toast.makeText(this, "Saldo anda kurang!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Menunggu konfirmasi, silahkan tunggu!", Toast.LENGTH_SHORT).show()
@@ -72,5 +76,19 @@ class TarikSaldoActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.apply {
+            if (isLoading) {
+                pbSignin.visibility = View.VISIBLE
+                overlayView.visibility = View.VISIBLE
+                btnTarik.isEnabled = false
+            } else {
+                pbSignin.visibility = View.GONE
+                overlayView.visibility = View.GONE
+                btnTarik.isEnabled = true
+            }
+        }
     }
 }

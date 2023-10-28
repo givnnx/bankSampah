@@ -3,12 +3,12 @@ package com.giovanni.banksampah.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.ActivityLoginBinding
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.admin.main.AdminMainActivity
@@ -34,6 +34,10 @@ class LoginActivity : AppCompatActivity() {
         getViewModel()
         auth()
         daftar()
+        viewModel.isLoading.observe(this) {
+            showLoading(it)
+        }
+
     }
 
     private fun getViewModel(){
@@ -78,6 +82,20 @@ class LoginActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.apply {
+            if (isLoading) {
+                pbSignin.visibility = View.VISIBLE
+                overlayView.visibility = View.VISIBLE
+                btnLogin.isEnabled = false
+            } else {
+                pbSignin.visibility = View.GONE
+                overlayView.visibility = View.GONE
+                btnLogin.isEnabled = true
+            }
         }
     }
 }
