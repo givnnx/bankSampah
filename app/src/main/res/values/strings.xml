@@ -116,6 +116,9 @@
     <string name="input_nomor_telepon">Masukkan Nomor Telepon Baru Anda</string>
     <string name="btn_ganti_nomor">Ganti Nomor</string>
     <string name="pass_verif_layout">Masukkan Password Anda</string>
+    <string name="verif_password">Verifikasi Password:</string>
+    <string name="nomor_telepon_user">Nomor Telepon</string>
+    <string name="nomor_telepon_profile">Nomor Telepon:</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
