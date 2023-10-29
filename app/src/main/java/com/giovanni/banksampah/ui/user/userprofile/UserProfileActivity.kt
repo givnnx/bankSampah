@@ -15,6 +15,7 @@ import com.giovanni.banksampah.databinding.ActivityUserProfileBinding
 import com.giovanni.banksampah.helper.Helper.rupiahFormat
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.ui.login.LoginActivity
+import com.giovanni.banksampah.ui.user.gantinomor.GantiNomorUserActivity
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 class UserProfileActivity : AppCompatActivity() {
@@ -60,6 +61,10 @@ class UserProfileActivity : AppCompatActivity() {
         }
         binding.bantuanLayout.setOnClickListener {
             val intent = Intent(this@UserProfileActivity, AboutActivity::class.java)
+            startActivity(intent)
+        }
+        binding.gantiNmrLayout.setOnClickListener {
+            val intent = Intent(this@UserProfileActivity, GantiNomorUserActivity::class.java)
             startActivity(intent)
         }
         viewModel.getUser().observe(this) {

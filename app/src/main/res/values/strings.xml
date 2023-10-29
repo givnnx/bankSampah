@@ -112,6 +112,10 @@
     <string name="jumlah_penarikan">Jumlah Penarikan:</string>
     <string name="nomor">Nomor Telepon</string>
     <string name="chgNumber">Ganti Nomor Telepon</string>
+    <string name="ganti_nmr_user">Ganti Nomor Telepon</string>
+    <string name="input_nomor_telepon">Masukkan Nomor Telepon Baru Anda</string>
+    <string name="btn_ganti_nomor">Ganti Nomor</string>
+    <string name="pass_verif_layout">Masukkan Password Anda</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
