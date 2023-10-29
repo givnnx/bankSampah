@@ -12,7 +12,7 @@ import com.giovanni.banksampah.databinding.ItemPermintaanTariksaldoBinding
 import com.giovanni.banksampah.helper.Helper
 import com.giovanni.banksampah.model.TarikSaldoModel
 
-class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<TarikSaldoModel>, private val viewModel: DaftarPermintaanTarikSaldoViewModel, private val context: Context): RecyclerView.Adapter<DaftarPermintaanTarikSaldoAdapter.ViewHolder>() {
+class DaftarPermintaanTarikSaldoAdapter(private val listPermintaanTarikSaldo: List<TarikSaldoModel>, private val viewModel: DaftarPermintaanTarikSaldoViewModel, private val context: Context): RecyclerView.Adapter<DaftarPermintaanTarikSaldoAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: ItemPermintaanTariksaldoBinding): RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +33,6 @@ class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<Tarik
 
             fun diterima(){
                 btnTerima.visibility = View.GONE
-                btnTolak.visibility = View.GONE
                 tvStatus.text = permintaan.status
                 tvStatus.setTextColor(Color.GREEN)
                 Log.d("adapter_id", permintaan.idPengguna)
@@ -41,7 +40,6 @@ class DaftarPermintaanTarikSaldoAdapter(val listPermintaanTarikSaldo: List<Tarik
 
             fun belumDiterima(){
                 btnTerima.visibility = View.VISIBLE
-                btnTolak.visibility = View.VISIBLE
                 tvStatus.setTextColor(Color.RED)
                 tvStatus.text = permintaan.status
             }

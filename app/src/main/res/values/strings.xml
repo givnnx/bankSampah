@@ -110,6 +110,8 @@
     <string name="sisa_saldo_user">Sisa Saldo User:</string>
     <string name="tanggal_permintaan">Tanggal Permintaan Tarik Saldo</string>
     <string name="jumlah_penarikan">Jumlah Penarikan:</string>
+    <string name="nomor">Nomor Telepon</string>
+    <string name="chgNumber">Ganti Nomor Telepon</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>

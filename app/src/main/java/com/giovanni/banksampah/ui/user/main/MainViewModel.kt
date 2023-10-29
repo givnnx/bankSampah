@@ -38,13 +38,14 @@ class MainViewModel(private val pref:UserPreference):ViewModel() {
             }
         }
     }
-    fun updateSaldo(balance: Long){
+    private fun updateSaldo(balance: Long){
         viewModelScope.launch {
             pref.saveBalance(balance)
         }
     }
 }
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactoryMain(private val pref: UserPreference): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
