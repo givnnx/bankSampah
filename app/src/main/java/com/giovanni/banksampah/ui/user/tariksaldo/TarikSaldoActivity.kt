@@ -41,7 +41,7 @@ class TarikSaldoActivity : AppCompatActivity() {
         binding.btnTarik.setOnClickListener {
             viewModel.getUser().observe(this){
                 saldo = it.saldo
-                if(binding.inputPenarikan.text.toString().toLong() > saldo || saldo == 0.toLong()){
+                if(binding.inputPenarikan.text.toString().toLong() > saldo){
                     Toast.makeText(this, "Saldo anda kurang!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Menunggu konfirmasi, silahkan tunggu!", Toast.LENGTH_SHORT).show()
@@ -81,11 +81,11 @@ class TarikSaldoActivity : AppCompatActivity() {
     private fun showLoading(isLoading: Boolean){
         binding.apply {
             if (isLoading) {
-                pbSignin.visibility = View.VISIBLE
+                pbTarikSld.visibility = View.VISIBLE
                 overlayView.visibility = View.VISIBLE
                 btnTarik.isEnabled = false
             } else {
-                pbSignin.visibility = View.GONE
+                pbTarikSld.visibility = View.GONE
                 overlayView.visibility = View.GONE
                 btnTarik.isEnabled = true
             }

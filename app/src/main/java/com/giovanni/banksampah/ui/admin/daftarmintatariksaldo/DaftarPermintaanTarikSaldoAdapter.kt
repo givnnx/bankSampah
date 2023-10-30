@@ -50,6 +50,20 @@ class DaftarPermintaanTarikSaldoAdapter(private val listPermintaanTarikSaldo: Li
                 belumDiterima()
             }
 
+            fun showLoading(isLoading: Boolean){
+                if (isLoading) {
+                    btnTerima.isEnabled = false
+                    pbSignin.visibility = View.VISIBLE
+                } else {
+                    btnTerima.isEnabled = true
+                    pbSignin.visibility = View.GONE
+                }
+            }
+
+            viewModel.isLoading.observe(context as LifecycleOwner){
+                showLoading(it)
+            }
+
             btnTerima.setOnClickListener {
                 permintaan.status = "Diterima"
                 viewModel.state.observe(context as LifecycleOwner) {

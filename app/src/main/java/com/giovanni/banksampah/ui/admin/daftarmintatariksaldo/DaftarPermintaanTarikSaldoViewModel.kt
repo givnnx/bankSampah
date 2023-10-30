@@ -20,6 +20,9 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
     private val repository: TarikSaldoRepository = TarikSaldoRepository(application)
     private val _state = MutableLiveData<Int>()
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     val state: LiveData<Int>
         get() = _state
 
@@ -70,10 +73,13 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
 
     fun updateSaldo(uid: String, jumlah: Long, id: String){
         database = Firebase.firestore
+        _isLoading.value = true
         val ref = database.collection("users").document(uid)
         val penarikanRef = database.collection("Penarikan Saldo").document(id)
         ref.get()
             .addOnSuccessListener {
+                updateState(0)
+                _isLoading.value = false
                 val saldo = it.data?.get("saldo").toString().toLong()
                 val saldoBaru = saldo - jumlah
                 Log.d("Saldo", saldo.toString())
@@ -81,6 +87,9 @@ class DaftarPermintaanTarikSaldoViewModel(application: Application, private val 
                 Log.d("Saldo Baru", saldoBaru.toString())
                 ref.update("saldo", saldoBaru)
                 penarikanRef.update("status", "Diterima")
+            }
+            .addOnFailureListener {
+                _isLoading.value = false
             }
     }
 }

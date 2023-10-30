@@ -25,6 +25,7 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val permintaan = listPermintaan[position]
+
         holder.binding.apply {
             tvNama.text = permintaan.namaPengguna
             tvDate.text = permintaan.tanggal
@@ -61,6 +62,27 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                 tvStatus.setTextColor(Color.GREEN)
                 Log.d("adapter_id", permintaan.idPengguna)
             }
+
+            fun showLoading(isLoading: Boolean){
+                if (isLoading) {
+                    btnTerima.isEnabled = false
+                    btnTolak.isEnabled = false
+                    btnBatal.isEnabled = false
+                    btnVerifikasi.isEnabled = false
+                    pbSignin.visibility = View.VISIBLE
+                } else {
+                    btnTerima.isEnabled = true
+                    btnTolak.isEnabled = true
+                    btnBatal.isEnabled = true
+                    btnVerifikasi.isEnabled = true
+                    pbSignin.visibility = View.GONE
+                }
+            }
+
+            viewModel.isLoading.observe(context as LifecycleOwner){
+                showLoading(it)
+            }
+
 
             if (tvStatus.text == "Diproses"){
                 diproses()

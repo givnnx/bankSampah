@@ -20,6 +20,9 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
     private val repository: Repository = Repository(application)
     private val _state = MutableLiveData<Int>()
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     val state: LiveData<Int>
         get() = _state
 
@@ -34,10 +37,12 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
     }
     fun fetchData(kategori:String){
         database = Firebase.firestore
+        _isLoading.value = true
         val ref = database.collection(kategori)
         ref.get()
             .addOnSuccessListener {
                 updateState(1)
+                _isLoading.value = false
                 for (document in it.documents) {
                     val subcollectionData = document.data
                     val uid = subcollectionData?.get("uid").toString()
@@ -69,24 +74,38 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
             }
             .addOnFailureListener { e ->
                 updateState(0)
+                _isLoading.value = false
                 Log.d("data", "Data Failed to Fetch")
             }
     }
 
     fun updateDataTerima(status:String, kategori: String, uid: String, nama:String){
         database = Firebase.firestore
-
+        _isLoading.value = true
         val ref = database.collection(kategori).document(uid)
         ref.update("status", status)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnSuccessListener {
+                Log.d(TAG, "DocumentSnapshot successfully written!")
+                _isLoading.value = false
+            }
+            .addOnFailureListener {
+                _isLoading.value = false
+            }
         val userRef = database.collection(nama).document(uid)
         userRef.update("status", status)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+            .addOnSuccessListener {
+                Log.d(TAG, "DocumentSnapshot successfully written!")
+                _isLoading.value = false
+            }
+            .addOnFailureListener {
+                _isLoading.value = false
+            }
     }
 
     fun updateSaldo(uid: String, pemasukan: Long){
         database = Firebase.firestore
         val ref = database.collection("users").document(uid)
+        _isLoading.value = true
         ref.get()
             .addOnSuccessListener {
                 val saldo = it.data?.get("saldo").toString().toLong()
@@ -95,6 +114,12 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                 Log.d("pemasukan", pemasukan.toString())
                 Log.d("Saldo Baru", saldoBaru.toString())
                 ref.update("saldo", saldoBaru)
+                    .addOnFailureListener {
+                        _isLoading.value = false
+                    }
+            }
+            .addOnFailureListener {
+                _isLoading.value = false
             }
     }
 }
