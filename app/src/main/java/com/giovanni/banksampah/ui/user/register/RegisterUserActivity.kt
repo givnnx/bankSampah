@@ -38,6 +38,7 @@ class RegisterUserActivity : AppCompatActivity() {
                 val email = edEmail.text.toString()
                 val password = edPassword.text.toString()
                 val alamat = edAddress.text.toString()
+                val telp = edNomorTelpon.text.toString()
 
                 if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
                     overlayView2.visibility = View.VISIBLE
@@ -58,7 +59,8 @@ class RegisterUserActivity : AppCompatActivity() {
                                     level = "user",
                                     alamat = alamat,
                                     saldo = 0,
-                                    loginState = false
+                                    loginState = false,
+                                    telp = telp
                                 )
 
                                 database.collection("users").document(user.uid)

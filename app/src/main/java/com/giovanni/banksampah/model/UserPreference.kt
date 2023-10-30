@@ -20,7 +20,8 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
                 preferences[LEVEL_KEY] ?: "",
                 preferences[ALAMAT_KEY] ?: "",
                 preferences[SALDO_KEY] ?: 0,
-                preferences[STATE_KEY] ?: false
+                preferences[STATE_KEY] ?: false,
+                preferences[TELP_KEY] ?: ""
             )
         }
     }
@@ -34,6 +35,7 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
             preferences[ALAMAT_KEY] = user.alamat
             preferences[SALDO_KEY] = user.saldo
             preferences[STATE_KEY] = user.loginState
+            preferences[TELP_KEY] = user.telp
         }
     }
     suspend fun login() {
@@ -63,6 +65,7 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
         private val STATE_KEY = booleanPreferencesKey("state")
         private val ALAMAT_KEY = stringPreferencesKey("alamat")
         private val SALDO_KEY = longPreferencesKey("saldo")
+        private val TELP_KEY = stringPreferencesKey("telp")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {

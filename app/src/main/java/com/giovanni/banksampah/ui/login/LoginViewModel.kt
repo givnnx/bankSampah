@@ -58,8 +58,9 @@ class LoginViewModel(private val pref: UserPreference): ViewModel() {
                         val level = result.data!!["level"].toString()
                         val alamat = result.data!!["alamat"].toString()
                         val saldo = result.data!!["saldo"].toString().toLong()
+                        val telp = result.data!!["telp"].toString()
                         Log.d("LOGIN", alamat )
-                        saveUser(UserModel(userUid, name, email, level ,alamat ,saldo , true))
+                        saveUser(UserModel(userUid, name, email, level ,alamat ,saldo , true, telp))
                         if (level == "user") {
                             val intent = Intent(activity, MainActivity::class.java)
                             intent.putExtra(MainActivity.EXTRA_USER, name)
