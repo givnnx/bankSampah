@@ -55,6 +55,7 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                     val catatan = subcollectionData?.get("catatan").toString()
                     val status = subcollectionData?.get("status").toString()
                     val idPengguna = subcollectionData?.get("idPengguna").toString()
+                    val telp = subcollectionData?.get("telp").toString()
                     Log.d("subcollection_data", subcollectionData.toString())
 
                     val user = Model(
@@ -67,7 +68,8 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
                         alamat = alamat,
                         catatan = catatan,
                         status = status,
-                        idPengguna = idPengguna
+                        idPengguna = idPengguna,
+                        telp = telp
                     )
                     repository.insert(user)
                 }

@@ -34,5 +34,8 @@ data class Model(
     var status: String,
 
     @ColumnInfo(name = "id_pengguna")
-    var idPengguna: String
+    var idPengguna: String,
+
+    @ColumnInfo(name = "telp")
+    var telp: String
 )

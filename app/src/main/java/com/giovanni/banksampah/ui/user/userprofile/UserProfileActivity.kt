@@ -70,6 +70,7 @@ class UserProfileActivity : AppCompatActivity() {
         viewModel.getUser().observe(this) {
             Log.d("Saldo", it.saldo.toString())
             binding.balanceInfo.text = rupiahFormat(it.saldo.toInt())
+            binding.telpInfo.text = it.telp
         }
     }
 }

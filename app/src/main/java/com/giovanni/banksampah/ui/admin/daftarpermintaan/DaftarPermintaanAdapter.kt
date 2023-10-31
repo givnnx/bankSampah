@@ -34,6 +34,7 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
             tvSaldo.text = "Pendapatan : " + Helper.rupiahFormat(permintaan.harga)
             tvAlamat.text = permintaan.alamat
             tvStatus.text = permintaan.status
+            tvNomorTlp.text = permintaan.telp
 
             fun diproses(){
                 btnTerima.visibility = View.GONE

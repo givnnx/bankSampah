@@ -37,6 +37,7 @@ class AdminRiwayatAdapter(val listPermintaan: List<Model>): RecyclerView.Adapter
             btnBatal.visibility = View.GONE
             tvStatus.text = permintaan.status
             tvStatus.setTextColor(Color.GREEN)
+            tvNomorTlp.text = permintaan.telp
         }
     }
 }

@@ -167,14 +167,16 @@ class InputDataActivity : AppCompatActivity() {
                 var alamat = "alamat"
                 val status = "Belum diterima"
                 var idPengguna = ""
+                var telp = ""
                 viewModel.getUser().observe(this@InputDataActivity) {
                     nama = it.username
                     alamat = it.alamat
                     idPengguna = it.uid
+                    telp = it.telp
                     Log.d("Nama", nama)
                     Log.d("alamat", alamat)
                 }
-                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity, status, idPengguna)
+                viewModel.addOrder(nama, kategoriSampah, berat, harga, tanggal, alamat, catatan, this@InputDataActivity, status, idPengguna, telp)
             }
         }
     }
