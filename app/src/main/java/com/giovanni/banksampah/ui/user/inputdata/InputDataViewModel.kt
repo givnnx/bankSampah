@@ -29,8 +29,29 @@ class InputDataViewModel(application: Application, private val pref: UserPrefere
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+
+    private val _Category = MutableLiveData<List<KategoriSampah>>()
+    val Category: LiveData<List<KategoriSampah>> = _Category
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
+    }
+
+    fun getCategory(){
+        database = Firebase.firestore
+        val docRef = database.collection("Jenis Sampah")
+        docRef.get()
+            .addOnSuccessListener {
+                val CategoryList = mutableListOf<KategoriSampah>()
+                for (document in it.documents){
+                    val subcollectionData = document.data
+                    val harga = subcollectionData?.get("Harga")
+                    val kategori = KategoriSampah(document.id, harga.toString().toLong())
+                    CategoryList.add(kategori)
+                    Log.d("Jenis", document.id)
+                    Log.d("Harga", subcollectionData?.get("Harga").toString())
+                }
+                _Category.value = CategoryList
+            }
     }
 
     fun addOrder(nama: String, kategori: String, berat: Int, harga: Int, tanggal: String, alamat:String, catatan: String, activity: Activity, status: String, idPengguna: String, telp: String){
@@ -91,3 +112,8 @@ class ViewModelFactoryInputData(private val mApplication: Application,private va
         }
     }
 }
+
+data class KategoriSampah(
+    val jenis: String,
+    val harga: Long
+)
