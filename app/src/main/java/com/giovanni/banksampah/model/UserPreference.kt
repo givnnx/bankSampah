@@ -55,6 +55,12 @@ class UserPreference private constructor(private val datastore: DataStore<Prefer
             preferences[STATE_KEY] = false
         }
     }
+
+    suspend fun editTelp(telp: String) {
+        datastore.edit { preference ->
+            preference[TELP_KEY] = telp
+        }
+    }
     companion object {
         @Volatile
         private var INSTANCE: UserPreference? = null
