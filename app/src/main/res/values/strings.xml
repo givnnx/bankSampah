@@ -79,25 +79,18 @@
     <string name="verifikasi">Verifikasi</string>
     <string name="batalkan">Batalkan</string>
     <string name="jenis_sampah_bar">Jenis Sampah</string>
-    <string name="botol">Botol: </string>
-    <string name="harga_botol">Rp 2.000</string>
-    <string name="plastik_daun">Plastik Daun: </string>
-    <string name="harga_plastik_botol">Rp 250</string>
-    <string name="kertas_hvs">Kertas HVS: </string>
-    <string name="harga_kertas_hvs">Rp 2.500</string>
-    <string name="kertas_duplek">Kertas Duplek: </string>
-    <string name="harga_kertas_duplek">Rp 500</string>
-    <string name="kertas_buram">Kertas Buram: </string>
-    <string name="harga_kertas_buram">Rp 1.000</string>
-    <string name="gelas_aqua">Gelas Aqua: </string>
-    <string name="harga_gelas_aqua">Rp 3.000</string>
-    <string name="ale_ale">Ale-ale: </string>
-    <string name="harga_ale_ale">Rp 1.000</string>
+    <string name="botol">Botol </string>
+    <string name="plastik_daun">Plastik Daun </string>
+    <string name="kertas_hvs">Kertas HVS </string>
+    <string name="kertas_duplek">Kertas Duplek </string>
+    <string name="kertas_buram">Kertas Buram </string>
+    <string name="gelas_aqua">Gelas Aqua </string>
+    <string name="ale_ale">Ale-ale </string>
     <string name="no_riwayat">Oops, riwayat masih kosong!</string>
     <string name="saldo_anda">Saldo Anda :</string>
     <string name="riwayat_user">Riwayat Anda</string>
     <string name="about_page">About</string>
-    <string name="app_version">Version 1.0.0</string>
+    <string name="app_version">Version 1.0.2</string>
     <string name="user_splash">App User Splash</string>
     <string name="admin_splash">App Admin Splash</string>
     <string name="minta_tarik">Permintaan Tarik Saldo</string>
@@ -119,6 +112,7 @@
     <string name="verif_password">Verifikasi Password:</string>
     <string name="nomor_telepon_user">Nomor Telepon</string>
     <string name="nomor_telepon_profile">Nomor Telepon:</string>
+    <string name="icon_sampah">Icon Sampah</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
