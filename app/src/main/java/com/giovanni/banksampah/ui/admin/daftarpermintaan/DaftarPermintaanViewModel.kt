@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -11,6 +12,7 @@ import com.giovanni.banksampah.model.Model
 import com.giovanni.banksampah.model.UserModel
 import com.giovanni.banksampah.model.UserPreference
 import com.giovanni.banksampah.repository.Repository
+import com.giovanni.banksampah.ui.user.inputdata.KategoriSampah
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -28,12 +30,47 @@ class DaftarPermintaanViewModel(application: Application, private val pref: User
 
     val daftar = repository.getDatabyStatus("Belum diterima")
     val daftar2 = repository.getDatabyStatus("Diproses")
+    private val _daftar3 = MediatorLiveData<List<Model>>()
+
+    init {
+        _daftar3.addSource(daftar) { combineLists() }
+        _daftar3.addSource(daftar2) { combineLists() }
+    }
+
+    val daftar3: LiveData<List<Model>> = _daftar3
+
+    private fun combineLists() {
+        val list1 = daftar.value ?: emptyList()
+        val list2 = daftar2.value ?: emptyList()
+        _daftar3.value = list1 + list2
+    }
 
     fun updateState(newState: Int) {
         _state.value = newState
     }
     fun getUser(): LiveData<UserModel> {
         return pref.gettingUser().asLiveData()
+    }
+
+    private val _Category = MutableLiveData<List<KategoriSampah>>()
+    val Category: LiveData<List<KategoriSampah>> = _Category
+
+    fun getCategory(){
+        database = Firebase.firestore
+        val docRef = database.collection("Jenis Sampah")
+        docRef.get()
+            .addOnSuccessListener {
+                val CategoryList = mutableListOf<KategoriSampah>()
+                for (document in it.documents){
+                    val subcollectionData = document.data
+                    val harga = subcollectionData?.get("Harga")
+                    val kategori = KategoriSampah(document.id, harga.toString().toLong())
+                    CategoryList.add(kategori)
+                    Log.d("Jenis", document.id)
+                    Log.d("Harga", subcollectionData?.get("Harga").toString())
+                }
+                _Category.value = CategoryList
+            }
     }
     fun fetchData(kategori:String){
         database = Firebase.firestore

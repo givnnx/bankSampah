@@ -64,6 +64,16 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                 Log.d("adapter_id", permintaan.idPengguna)
             }
 
+            fun ditolak(){
+                btnTerima.visibility = View.GONE
+                btnTolak.visibility = View.GONE
+                btnVerifikasi.visibility = View.GONE
+                btnBatal.visibility = View.GONE
+                tvStatus.text = permintaan.status
+                tvStatus.setTextColor(Color.RED)
+                Log.d("adapter_id", permintaan.idPengguna)
+            }
+
             fun showLoading(isLoading: Boolean){
                 if (isLoading) {
                     btnTerima.isEnabled = false
@@ -89,8 +99,10 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                 diproses()
             } else if (tvStatus.text == "Diterima"){
                 diterima()
-            } else {
+            } else if(tvStatus.text == "Belum diterima"){
                 belumDiterima()
+            } else {
+                ditolak()
             }
 
             btnTerima.setOnClickListener {
@@ -122,6 +134,16 @@ class DaftarPermintaanAdapter(val listPermintaan: List<Model>, private val viewM
                     }
                 }
                 viewModel.updateSaldo(permintaan.idPengguna, permintaan.harga.toLong())
+            }
+
+            btnTolak.setOnClickListener {
+                permintaan.status = "Ditolak Mampus"
+                viewModel.updateDataTerima(permintaan.status, permintaan.jenisSampah, permintaan.uid, permintaan.namaPengguna)
+                viewModel.state.observe(context as LifecycleOwner) {
+                    if (it == 1) {
+                        ditolak()
+                    }
+                }
             }
         }
     }

@@ -9,7 +9,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.giovanni.banksampah.R
 import com.giovanni.banksampah.databinding.ActivityDaftarPermintaanBinding
 import com.giovanni.banksampah.model.Model
 import com.giovanni.banksampah.model.UserPreference
@@ -19,31 +18,36 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class DaftarPermintaanActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDaftarPermintaanBinding
     private lateinit var viewModel:DaftarPermintaanViewModel
+    lateinit var strKategori: Array<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDaftarPermintaanBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setToolbar()
         viewModel = getViewModel(this, dataStore)
+        viewModel.getCategory()
 
         viewModel.getUser().observe(this) {
             if (it.level == "admin") {
-                for (item in resources.getStringArray(R.array.kategori_sampah)) {
-                    viewModel.fetchData(item)
+                viewModel.Category.observe(this){
+                    val updatedStrKategori = Array(it.size) { "" }
+
+                    for ((index, category) in it.withIndex()) {
+                        updatedStrKategori[index] = category.jenis
+                    }
+                    strKategori = updatedStrKategori
+
+                    for (item in strKategori) {
+                        viewModel.fetchData(item)
+                    }
                 }
             }
         }
 
         binding.rvDaftarPermintaan.layoutManager = LinearLayoutManager(this)
         binding.rvDaftarPermintaan.setHasFixedSize(true)
-
-        viewModel.daftar2.observe(this) {
-            val mergedData = mutableListOf<Model>()
-            mergedData.addAll(it)
-            viewModel.daftar.observe(this){
-                mergedData.addAll(it)
-                setUsers(mergedData)
-            }
+        viewModel.daftar3.observe(this){
+            setUsers(it)
         }
     }
 

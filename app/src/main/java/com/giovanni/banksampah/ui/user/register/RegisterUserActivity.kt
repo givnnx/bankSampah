@@ -40,47 +40,55 @@ class RegisterUserActivity : AppCompatActivity() {
                 val alamat = edAddress.text.toString()
                 val telp = edNomorTelpon.text.toString()
 
-                if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
-                    overlayView2.visibility = View.VISIBLE
-                    pbSignup.visibility = View.VISIBLE
-                    btnRegister.isEnabled = false
+                val ref = database.collection(username)
+                ref.get()
+                    .addOnCompleteListener {
+                        if (it.isSuccessful){
+                            Toast.makeText(this@RegisterUserActivity, "Username telah digunakan", Toast.LENGTH_SHORT).show()
+                        } else {
+                            if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
+                                overlayView2.visibility = View.VISIBLE
+                                pbSignup.visibility = View.VISIBLE
+                                btnRegister.isEnabled = false
 
-                    firebaseAuth.createUserWithEmailAndPassword(email, password). addOnCompleteListener{
-                        overlayView2.visibility = View.GONE
-                        pbSignup.visibility = View.GONE
-                        btnRegister.isEnabled = true
-                        if(it.isSuccessful){
-                            val user = it.result.user
-                            if (user != null) {
-                                val userData = UserModel(
-                                    uid = user.uid,
-                                    username = username,
-                                    email = email,
-                                    level = "user",
-                                    alamat = alamat,
-                                    saldo = 0,
-                                    loginState = false,
-                                    telp = telp
-                                )
+                                firebaseAuth.createUserWithEmailAndPassword(email, password). addOnCompleteListener{
+                                    overlayView2.visibility = View.GONE
+                                    pbSignup.visibility = View.GONE
+                                    btnRegister.isEnabled = true
+                                    if(it.isSuccessful){
+                                        val user = it.result.user
+                                        if (user != null) {
+                                            val userData = UserModel(
+                                                uid = user.uid,
+                                                username = username,
+                                                email = email,
+                                                level = "user",
+                                                alamat = alamat,
+                                                saldo = 0,
+                                                loginState = false,
+                                                telp = telp
+                                            )
 
-                                database.collection("users").document(user.uid)
-                                    .set(userData)
-                                    .addOnSuccessListener {
-                                        Log.d(TAG, "DocumentSnapshot successfully written!")
-                                        val intent = Intent(this@RegisterUserActivity, LoginActivity::class.java)
-                                        startActivity(intent)
+                                            database.collection("users").document(user.uid)
+                                                .set(userData)
+                                                .addOnSuccessListener {
+                                                    Log.d(TAG, "DocumentSnapshot successfully written!")
+                                                    val intent = Intent(this@RegisterUserActivity, LoginActivity::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                                        }
+                                        Toast.makeText(this@RegisterUserActivity, "Account Made", Toast.LENGTH_SHORT).show()
                                     }
-                                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                                    else {
+                                        Toast.makeText(this@RegisterUserActivity, "Error", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(this@RegisterUserActivity, "Isi semua kolom terlebih dahulu", Toast.LENGTH_SHORT).show()
                             }
-                            Toast.makeText(this@RegisterUserActivity, "Account Made", Toast.LENGTH_SHORT).show()
-                        }
-                        else {
-                            Toast.makeText(this@RegisterUserActivity, "Error", Toast.LENGTH_SHORT).show()
                         }
                     }
-                } else {
-                    Toast.makeText(this@RegisterUserActivity, "Fill All First", Toast.LENGTH_SHORT).show()
-                }
             }
 
             tvMasuk.setOnClickListener{
