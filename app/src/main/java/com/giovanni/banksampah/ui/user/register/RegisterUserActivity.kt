@@ -34,6 +34,9 @@ class RegisterUserActivity : AppCompatActivity() {
 
         binding.apply {
             btnRegister.setOnClickListener{
+                overlayView2.visibility = View.VISIBLE
+                pbSignup.visibility = View.VISIBLE
+                btnRegister.isEnabled = false
                 val username = edUsername.text.toString()
                 val email = edEmail.text.toString()
                 val password = edPassword.text.toString()
@@ -42,14 +45,9 @@ class RegisterUserActivity : AppCompatActivity() {
 
                 val ref = database.collection(username)
                 ref.get()
-                    .addOnCompleteListener {
-                        if (it.isSuccessful){
-                            Toast.makeText(this@RegisterUserActivity, "Username telah digunakan", Toast.LENGTH_SHORT).show()
-                        } else {
+                    .addOnSuccessListener {
+                        if (it.isEmpty){
                             if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()){
-                                overlayView2.visibility = View.VISIBLE
-                                pbSignup.visibility = View.VISIBLE
-                                btnRegister.isEnabled = false
 
                                 firebaseAuth.createUserWithEmailAndPassword(email, password). addOnCompleteListener{
                                     overlayView2.visibility = View.GONE
@@ -87,7 +85,14 @@ class RegisterUserActivity : AppCompatActivity() {
                             } else {
                                 Toast.makeText(this@RegisterUserActivity, "Isi semua kolom terlebih dahulu", Toast.LENGTH_SHORT).show()
                             }
+                        } else {
+                            Toast.makeText(this@RegisterUserActivity, "Username telah digunakan", Toast.LENGTH_SHORT).show()
                         }
+                    }
+                    .addOnCompleteListener {
+                        overlayView2.visibility = View.GONE
+                        pbSignup.visibility = View.GONE
+                        btnRegister.isEnabled = true
                     }
             }
 

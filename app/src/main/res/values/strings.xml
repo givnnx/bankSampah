@@ -112,6 +112,7 @@
     <string name="verif_password">Verifikasi Password:</string>
     <string name="nomor_telepon_user">Nomor Telepon</string>
     <string name="nomor_telepon_profile">Nomor Telepon:</string>
+    <string name="icon_sampah">Sampah</string>
 
     <string-array name="kategori_sampah">
         <item>Botol</item>
